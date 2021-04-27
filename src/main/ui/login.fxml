@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
+    <children>
+            <Label fx:id="isConnected" layoutX="23.0" layoutY="173.0" text="Status">
+
+            </Label>
+      <TextField fx:id="txtUsername" layoutX="78.0" layoutY="55.0" AnchorPane.bottomAnchor="118.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="61.5" AnchorPane.topAnchor="55.0" />
+      <PasswordField fx:id="txtPassword" layoutX="78.0" layoutY="100.0" AnchorPane.bottomAnchor="73.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="61.5" AnchorPane.topAnchor="100.0" />
+      <Button defaultButton="true" layoutX="126.0" layoutY="140.0" mnemonicParsing="false" onAction="#Login" text="Login" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="125.5" AnchorPane.topAnchor="140.0">
+         <effect>
+            <Lighting bumpInput="$null">
+               <light>
+                  <Light.Distant>
+                     <color>
+                        <Color red="0.9342105388641357" green="0.025950292125344276" blue="0.025950292125344276" />
+                     </color>
+                  </Light.Distant>
+               </light>
+            </Lighting>
+         </effect>
+         <font>
+            <Font name="System Font" size="13.0" />
+         </font></Button>
+
+
+    </children>
+
+</AnchorPane>
