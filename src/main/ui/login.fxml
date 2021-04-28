@@ -3,31 +3,37 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
+<AnchorPane prefHeight="373.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
     <children>
-            <Label fx:id="isConnected" layoutX="23.0" layoutY="173.0" text="Status">
+            <Label fx:id="isConnected" layoutX="15.0" layoutY="340.0" text="Status">
 
             </Label>
-      <TextField fx:id="txtUsername" layoutX="78.0" layoutY="55.0" AnchorPane.bottomAnchor="118.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="61.5" AnchorPane.topAnchor="55.0" />
-      <PasswordField fx:id="txtPassword" layoutX="78.0" layoutY="100.0" AnchorPane.bottomAnchor="73.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="61.5" AnchorPane.topAnchor="100.0" />
-      <Button defaultButton="true" layoutX="126.0" layoutY="140.0" mnemonicParsing="false" onAction="#Login" text="Login" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="125.5" AnchorPane.topAnchor="140.0">
+
+      <PasswordField fx:id="txtPassword" layoutX="98.0" layoutY="173.0" prefHeight="41.0" prefWidth="236.0" AnchorPane.bottomAnchor="159.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="173.0" />
+
+      <TextField fx:id="txtUsername" layoutX="98.0" layoutY="114.0" prefHeight="41.0" prefWidth="231.0" AnchorPane.bottomAnchor="218.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="114.0" />
+      <Button blendMode="DARKEN" defaultButton="true" layoutX="98.0" layoutY="258.0" mnemonicParsing="false" onAction="#Login" prefHeight="54.0" prefWidth="236.0" style="-fx-background-color: white;" text="LOGIN" textAlignment="CENTER" AnchorPane.bottomAnchor="61.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="258.0">
          <effect>
             <Lighting bumpInput="$null">
                <light>
-                  <Light.Distant>
-                     <color>
-                        <Color red="0.9342105388641357" green="0.025950292125344276" blue="0.025950292125344276" />
-                     </color>
-                  </Light.Distant>
+                  <Light.Distant />
                </light>
             </Lighting>
          </effect>
          <font>
-            <Font name="System Font" size="13.0" />
+            <Font name="Comic Sans MS" size="15.0" />
          </font></Button>
+      <Label layoutX="131.0" layoutY="51.0" prefHeight="31.0" prefWidth="169.0" text="HOTDESKING">
+         <font>
+            <Font name="Lucida Sans Unicode" size="26.0" />
+         </font></Label>
+      <Hyperlink layoutX="271.0" layoutY="222.0" style="-fx-font-style: italic;" text="Forgot password?">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Hyperlink>
 
 
     </children>
