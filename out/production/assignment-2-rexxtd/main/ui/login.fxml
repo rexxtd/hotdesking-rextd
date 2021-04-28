@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="373.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
+    <children>
+            <Label fx:id="isConnected" layoutX="14.0" layoutY="350.0" text="Status" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="292.59999999999997">
+
+            </Label>
+
+      <PasswordField fx:id="txtPassword" layoutX="98.0" layoutY="173.0" prefHeight="41.0" prefWidth="236.0" promptText="Password" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="80.0" />
+
+      <TextField fx:id="txtUsername" layoutX="98.0" layoutY="114.0" prefHeight="41.0" prefWidth="231.0" promptText="Username" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="80.0" />
+      <Button blendMode="DARKEN" defaultButton="true" layoutX="98.0" layoutY="258.0" mnemonicParsing="false" onAction="#Login" prefHeight="54.0" prefWidth="236.0" style="-fx-background-color: white;" text="LOGIN" textAlignment="CENTER" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="80.0">
+         <effect>
+            <Lighting bumpInput="$null">
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font></Button>
+      <Label layoutX="130.0" layoutY="40.0" prefHeight="43.0" prefWidth="169.0" text="HOTDESKING" textAlignment="CENTER" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="109.39999999999998">
+         <font>
+            <Font name="Lucida Sans Unicode" size="26.0" />
+         </font></Label>
+      <Hyperlink layoutX="271.0" layoutY="224.0" prefHeight="29.0" prefWidth="129.0" style="-fx-font-style: italic;" text="Forgot password?" AnchorPane.rightAnchor="9.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink layoutX="287.0" layoutY="328.0" style="-fx-font-weight: bold;" text="Create your account" underline="true" AnchorPane.rightAnchor="0.39999999999997726" />
+      <Label layoutX="158.00000000000003" layoutY="332.0" text="Not a member yet?" textFill="#0593c7" AnchorPane.rightAnchor="148.59999999999997" />
+
+
+    </children>
+
+</AnchorPane>

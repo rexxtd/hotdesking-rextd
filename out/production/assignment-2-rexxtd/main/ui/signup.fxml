@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="397.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
+    <children>
+
+        <PasswordField fx:id="txtPassword" layoutX="87.0" layoutY="180.0" prefHeight="35.0" prefWidth="231.0" promptText="Password" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="91.0" />
+
+        <TextField fx:id="txtUsername" layoutX="87.0" layoutY="56.0" prefHeight="35.0" prefWidth="297.0" promptText="First name" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="91.0" />
+        <Button blendMode="DARKEN" defaultButton="true" layoutX="88.0" layoutY="337.0" mnemonicParsing="false" onAction="#Login" prefHeight="43.0" prefWidth="231.0" style="-fx-background-color: white;" text="SIGN UP" textAlignment="CENTER" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="90.0">
+            <effect>
+                <Lighting bumpInput="$null">
+                    <light>
+                        <Light.Distant />
+                    </light>
+                </Lighting>
+            </effect>
+            <font>
+                <Font name="Comic Sans MS" size="15.0" />
+            </font></Button>
+        <Label layoutX="152.0" layoutY="13.0" prefHeight="43.0" prefWidth="104.0" text="SIGN UP" textAlignment="CENTER" AnchorPane.leftAnchor="152.0" AnchorPane.rightAnchor="153.0">
+            <font>
+                <Font name="Lucida Sans Unicode" size="26.0" />
+            </font></Label>
+      <TextField fx:id="txtUsername1" layoutX="87.0" layoutY="97.0" prefHeight="35.0" prefWidth="297.0" promptText="Role" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="91.0" />
+      <TextField fx:id="txtUsername11" layoutX="87.0" layoutY="139.0" prefHeight="35.0" prefWidth="231.0" promptText="Username" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="91.0" />
+      <TextField fx:id="txtUsername111" layoutX="87.0" layoutY="221.0" prefHeight="35.0" prefWidth="231.0" promptText="Secret question" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="91.0" />
+      <TextField fx:id="txtUsername1111" layoutX="87.0" layoutY="263.0" prefHeight="35.0" prefWidth="231.0" promptText="Answer" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="90.80000000000001" />
+      <Label layoutX="128.0" layoutY="306.0" prefHeight="18.0" prefWidth="104.0" text="Already a member?" textAlignment="CENTER" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="177.0" />
+      <Hyperlink layoutX="230.0" layoutY="304.0" prefHeight="23.0" prefWidth="49.0" style="-fx-font-weight: bold;" text="Log In" textAlignment="CENTER" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="130.0" />
+
+
+    </children>
+
+</AnchorPane>
