@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="378.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
+    <children>
+        <Button blendMode="DARKEN" defaultButton="true" layoutX="100.0" layoutY="267.0" mnemonicParsing="false" onAction="#Login" prefHeight="54.0" prefWidth="212.0" style="-fx-background-color: white;" text="Reset password" textAlignment="CENTER" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="97.0">
+            <effect>
+                <Lighting bumpInput="$null">
+                    <light>
+                        <Light.Distant />
+                    </light>
+                </Lighting>
+            </effect>
+            <font>
+                <Font name="Comic Sans MS" size="15.0" />
+            </font></Button>
+        <Label layoutX="98.0" layoutY="42.0" prefHeight="43.0" prefWidth="231.0" text="RESET PASSWORD" textAlignment="CENTER" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="80.0">
+            <font>
+                <Font name="Lucida Sans Unicode" size="26.0" />
+            </font></Label>
+      <PasswordField layoutX="101.0" layoutY="115.0" prefHeight="43.0" prefWidth="212.0" promptText="New Password" />
+      <PasswordField layoutX="101.0" layoutY="182.0" prefHeight="43.0" prefWidth="212.0" promptText="Confirm New Password" />
+
+
+    </children>
+
+</AnchorPane>

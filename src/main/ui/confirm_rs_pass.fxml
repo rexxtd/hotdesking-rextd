@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="407.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
+    <children>
+        <Label fx:id="isConnected" layoutX="14.0" layoutY="375.0" text="Status" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="292.59999999999997">
+
+        </Label>
+        <Button blendMode="DARKEN" defaultButton="true" layoutX="98.0" layoutY="307.0" mnemonicParsing="false" onAction="#Login" prefHeight="54.0" prefWidth="236.0" style="-fx-background-color: white;" text="Confirm" textAlignment="CENTER" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="80.0">
+            <effect>
+                <Lighting bumpInput="$null">
+                    <light>
+                        <Light.Distant />
+                    </light>
+                </Lighting>
+            </effect>
+            <font>
+                <Font name="Comic Sans MS" size="15.0" />
+            </font></Button>
+        <Label layoutX="98.0" layoutY="39.0" prefHeight="43.0" prefWidth="231.0" text="RESET PASSWORD" textAlignment="CENTER" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="80.0">
+            <font>
+                <Font name="Lucida Sans Unicode" size="26.0" />
+            </font></Label>
+      <Label layoutX="115.0" layoutY="82.0" prefHeight="43.0" prefWidth="197.0" text="Please confirm your account" textAlignment="CENTER" AnchorPane.leftAnchor="115.00000000000003" AnchorPane.rightAnchor="96.4">
+         <font>
+            <Font name="Lucida Sans Unicode" size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="98.0" layoutY="190.0" prefHeight="42.0" prefWidth="231.0" promptText="Secret Question" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="79.80000000000001" />
+      <TextField layoutX="98.0" layoutY="135.0" prefHeight="42.0" prefWidth="231.0" promptText="Username" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="79.80000000000001" />
+      <TextField layoutX="98.0" layoutY="248.0" prefHeight="42.0" prefWidth="231.0" promptText="Answer" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="79.80000000000001" />
+
+
+    </children>
+
+</AnchorPane>
