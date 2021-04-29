@@ -1,29 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="378.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
     <children>
-        <Button blendMode="DARKEN" defaultButton="true" layoutX="100.0" layoutY="267.0" mnemonicParsing="false" onAction="#Login" prefHeight="54.0" prefWidth="212.0" style="-fx-background-color: white;" text="Reset password" textAlignment="CENTER" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="97.0">
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+         <children>
+              <Label prefHeight="0.0" prefWidth="289.0" text="RESET PASSWORD" textAlignment="CENTER">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+            <Label prefHeight="31.0" prefWidth="270.0" text="Your password has been reset." textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label prefHeight="32.0" prefWidth="233.0" text="This is your new password" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" />
+            <Label text="Please write this password down so you do not have to reset your password." textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="74.0" layoutY="224.0" text="Never show your password to anyone. Our staff will never ask for your password " textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+        <Button blendMode="DARKEN" defaultButton="true" layoutX="89.0" layoutY="411.0" mnemonicParsing="false" onAction="#Login" prefHeight="59.0" prefWidth="622.0" style="-fx-background-color: white;" text="Go back to login" textAlignment="CENTER" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="89.0">
             <effect>
                 <Lighting bumpInput="$null">
-                    <light>
-                        <Light.Distant />
-                    </light>
                 </Lighting>
             </effect>
             <font>
                 <Font name="Comic Sans MS" size="15.0" />
             </font></Button>
-        <Label layoutX="98.0" layoutY="42.0" prefHeight="43.0" prefWidth="231.0" text="RESET PASSWORD" textAlignment="CENTER" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="80.0">
-            <font>
-                <Font name="Lucida Sans Unicode" size="26.0" />
-            </font></Label>
-      <PasswordField layoutX="101.0" layoutY="115.0" prefHeight="43.0" prefWidth="212.0" promptText="New Password" />
-      <PasswordField layoutX="101.0" layoutY="182.0" prefHeight="43.0" prefWidth="212.0" promptText="Confirm New Password" />
 
 
     </children>
