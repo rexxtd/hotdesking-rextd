@@ -8,10 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SignUpModel {
+public class ResetModel {
     Connection connection;
 
-    public SignUpModel() {
+    public ResetModel() {
         connection = SQLConnection.connect();
         if (connection == null)
             System.exit(1);

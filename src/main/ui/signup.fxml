@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.SignUpController">
     <children>
       <VBox alignment="TOP_CENTER" prefHeight="539.0" prefWidth="800.0" spacing="12.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
          <children>
@@ -28,14 +23,14 @@
               <PasswordField fx:id="txtPassword" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Password" />
             <TextField fx:id="txtSecret" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Secret question" />
             <TextField fx:id="txtAnswer" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Answer" />
-            <Hyperlink fx:id="hpLogin" prefHeight="32.0" prefWidth="205.0" style="-fx-font-weight: bold;" text="Log In" textAlignment="CENTER">
+            <Hyperlink fx:id="hpLogin" onAction="#Login" prefHeight="32.0" prefWidth="205.0" style="-fx-font-weight: bold;" text="Log In" textAlignment="CENTER">
                <graphic>
                   <Label prefHeight="21.0" prefWidth="139.0" text="Already a member?" textAlignment="CENTER" />
                </graphic>
             </Hyperlink>
          </children>
       </VBox>
-        <Button fx:id="signUpButton" blendMode="DARKEN" defaultButton="true" layoutX="88.0" layoutY="502.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#Signup" prefHeight="53.0" prefWidth="622.0" style="-fx-background-color: white;" text="SIGN UP" textAlignment="CENTER" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="90.0">
+        <Button fx:id="signUpButton" blendMode="DARKEN" defaultButton="true" layoutX="209.0" layoutY="501.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="53.0" prefWidth="378.0" style="-fx-background-color: white;" text="SIGN UP" textAlignment="CENTER" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="213.0">
             <effect>
                 <Lighting bumpInput="$null">
                 </Lighting>

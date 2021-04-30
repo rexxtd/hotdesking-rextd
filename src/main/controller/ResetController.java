@@ -10,16 +10,17 @@ import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import main.model.LoginModel;
+import main.model.ResetModel;
 import main.model.SignUpModel;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SignUpController implements Initializable
+public class ResetController implements Initializable
 {
     public LoginModel loginModel = new LoginModel();
-    public SignUpModel signupModel = new SignUpModel();
+    public ResetModel resetModel = new ResetModel();
     @FXML
     private Label isConnected;
     @FXML
@@ -57,7 +58,7 @@ public class SignUpController implements Initializable
     }
 
     //switch to resetPassword scene
-    public void Login(ActionEvent event) throws IOException
+    public void loginPage(ActionEvent event) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("../ui/login.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

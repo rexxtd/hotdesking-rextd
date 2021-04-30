@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ResetController">
     <children>
       <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="522.0" prefWidth="800.0" spacing="10.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
          <children>
@@ -41,9 +38,20 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </TextField>
+            <Hyperlink onAction="#loginPage" prefHeight="33.0" prefWidth="391.0" text="Try log in instead">
+               <graphic>
+                  <Label prefHeight="25.0" prefWidth="214.0" text="Remember your password now?" textAlignment="CENTER" />
+               </graphic>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="100.0" />
+               </VBox.margin>
+            </Hyperlink>
          </children>
       </VBox>
-        <Button fx:id="confirmButton" blendMode="DARKEN" defaultButton="true" layoutX="219.0" layoutY="454.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="361.0" style="-fx-background-color: white;" text="CONFIRM" textAlignment="CENTER" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0">
+        <Button fx:id="confirmButton" blendMode="DARKEN" defaultButton="true" layoutX="232.0" layoutY="425.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="341.0" style="-fx-background-color: white;" text="CONFIRM" textAlignment="CENTER" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="227.0">
             <effect>
                 <Lighting bumpInput="$null">
                 </Lighting>

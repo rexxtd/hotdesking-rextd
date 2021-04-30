@@ -21,32 +21,24 @@
                   <Image url="@img/user.png" />
                </image>
             </ImageView>
-      
+
             <TextField fx:id="txtUsername" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Username">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
             </TextField>
-      
+
             <PasswordField fx:id="txtPassword" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Password">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </PasswordField>
-            <Hyperlink fx:id="forgotPassword" prefHeight="29.0" prefWidth="129.0" style="-fx-font-style: italic;" text="Forgot password?">
+            <Hyperlink fx:id="forgotPassword" onAction="#reset" prefHeight="29.0" prefWidth="129.0" style="-fx-font-style: italic;" text="Forgot password?">
                <font>
                   <Font size="15.0" />
                </font>
                <VBox.margin>
                   <Insets left="220.0" top="5.0" />
-               </VBox.margin>
-            </Hyperlink>
-            <Hyperlink fx:id="createAccount" style="-fx-font-weight: bold;" text="Create your account" underline="true">
-               <graphic>
-                  <Label text="Not a member yet?" textFill="#0593c7" />
-               </graphic>
-               <VBox.margin>
-                  <Insets top="80.0" />
                </VBox.margin>
             </Hyperlink>
          </children>
@@ -62,6 +54,8 @@
             <Label fx:id="isConnected" layoutX="14.0" layoutY="571.0" text="Status">
 
             </Label>
+      <Button fx:id="createAccount" accessibleRole="HYPERLINK" layoutX="398.0" layoutY="495.0" mnemonicParsing="false" onAction="#signUp" prefHeight="31.0" prefWidth="156.0" text="Create your account" textAlignment="CENTER" />
+      <Label fx:id="isConnected1" accessibleRole="HYPERLINK" layoutX="267.0" layoutY="500.0" text="Already a member?" />
 
 
     </children>
