@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -13,7 +12,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
     <children>
-      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="800.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+      <VBox alignment="TOP_CENTER" prefHeight="539.0" prefWidth="800.0" spacing="12.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
          <children>
               <Label maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="150.0" text="SIGN UP" textAlignment="CENTER">
                <font>
@@ -21,22 +20,22 @@
                </font>
             </Label>
       
-              <TextField fx:id="txtUsername" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="First name" />
-            <TextField fx:id="txtUsername112" layoutX="260.0" layoutY="139.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Lastname" />
-            <TextField fx:id="txtUsername1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Role" />
-            <TextField fx:id="txtUsername11" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Username" />
+              <TextField fx:id="txtFirstname" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="First name" />
+            <TextField fx:id="txtLastname" layoutX="260.0" layoutY="139.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Lastname" />
+            <TextField fx:id="txtRole" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Role" />
+            <TextField fx:id="txtUsername" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Username" />
       
               <PasswordField fx:id="txtPassword" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Password" />
-            <TextField fx:id="txtUsername111" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Secret question" />
-            <TextField fx:id="txtUsername1111" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Answer" />
-            <Hyperlink prefHeight="32.0" prefWidth="205.0" style="-fx-font-weight: bold;" text="Log In" textAlignment="CENTER">
+            <TextField fx:id="txtSecret" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Secret question" />
+            <TextField fx:id="txtAnswer" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Answer" />
+            <Hyperlink fx:id="hpLogin" prefHeight="32.0" prefWidth="205.0" style="-fx-font-weight: bold;" text="Log In" textAlignment="CENTER">
                <graphic>
                   <Label prefHeight="21.0" prefWidth="139.0" text="Already a member?" textAlignment="CENTER" />
                </graphic>
             </Hyperlink>
          </children>
       </VBox>
-        <Button blendMode="DARKEN" defaultButton="true" layoutX="88.0" layoutY="502.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#Login" prefHeight="53.0" prefWidth="622.0" style="-fx-background-color: white;" text="SIGN UP" textAlignment="CENTER" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="90.0">
+        <Button fx:id="signUpButton" blendMode="DARKEN" defaultButton="true" layoutX="88.0" layoutY="502.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#Signup" prefHeight="53.0" prefWidth="622.0" style="-fx-background-color: white;" text="SIGN UP" textAlignment="CENTER" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="90.0">
             <effect>
                 <Lighting bumpInput="$null">
                 </Lighting>
@@ -44,6 +43,7 @@
             <font>
                 <Font name="Comic Sans MS" size="15.0" />
             </font></Button>
+      <Label fx:id="isConnected" layoutX="14.0" layoutY="572.0" text="Status" />
 
 
     </children>

@@ -1,10 +1,15 @@
 package main.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 import main.model.LoginModel;
 
 import java.net.URL;
@@ -20,6 +25,8 @@ public class LoginController implements Initializable
     private TextField txtUsername;
     @FXML
     private TextField txtPassword;
+    @FXML
+    private Hyperlink createAccount;
 
     // Check database connection
     @Override
@@ -47,7 +54,8 @@ public class LoginController implements Initializable
             }
             else
             {
-                isConnected.setText("username and password is incorrect");
+                isConnected.setText("Invalid username or password. Please try again");
+                signUp();
             }
         }
         catch (SQLException e)
@@ -55,5 +63,20 @@ public class LoginController implements Initializable
             e.printStackTrace();
         }
     }
-    //11.2.3 big sur
+
+    public void signUp()
+    {
+        try
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("ui/signup.fxml"));
+            Stage signupStage = new Stage();
+            signupStage.setScene(new Scene(root,800, 600));
+            signupStage.show();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
 }
