@@ -27,4 +27,25 @@ public class SignUpModel
             return false;
         }
     }
+
+    public void addDatabase(String firstname,String lastname,String role,String username,String password,String secret,String answer) throws SQLException
+    {
+        SQLConnection sqlConnection = new SQLConnection();
+        Connection connectionDB = sqlConnection.connect();
+
+        String insertFields = "INSERT INTO Employee (firstname, lastname, role, username, password, secret_qs, answer) VALUES ('" ;
+        String insertValues =  firstname + "','" + lastname + "','" + role + "','" + username + "','" + password + "','" + secret + "','" + answer + "')";
+        String query = insertFields + insertValues;
+
+        try
+        {
+            Statement statement = connectionDB.createStatement();
+            statement.executeUpdate(query);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
 }

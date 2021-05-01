@@ -61,16 +61,12 @@ public class SignUpController implements Initializable
         }
     }
 
-    public void Signup(ActionEvent event)
-    {
+    public void Signup(ActionEvent event) throws SQLException {
         registerUser();
         successMessage.setText("User has been registered successfully!");
     }
 
-    public void registerUser()
-    {
-        SQLConnection sqlConnection = new SQLConnection();
-        Connection connectionDB = sqlConnection.connect();
+    public void registerUser() throws SQLException {
         String firstname = txtFirstname.getText();
         String lastname = txtLastname.getText();
         String role = txtRole.getText();
@@ -79,20 +75,7 @@ public class SignUpController implements Initializable
         String secret = txtSecret.getText();
         String answer = txtAnswer.getText();
 
-        String insertFields = "INSERT INTO Employee (firstname, lastname, role, username, password, secret_qs, answer) VALUES ('" ;
-        String insertValues =  firstname + "','" + lastname + "','" + role + "','" + username + "','" + password + "','" + secret + "','" + answer + "')";
-        String query = insertFields + insertValues;
-
-        try
-        {
-            Statement statement = connectionDB.createStatement();
-            statement.executeUpdate(query);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            e.getCause();
-        }
+        signupModel.addDatabase(firstname, lastname, role, username, password, secret, answer);
     }
 
     //switch to resetPassword scene
