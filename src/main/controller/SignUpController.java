@@ -9,16 +9,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import main.SQLConnection;
 import main.model.LoginModel;
 import main.model.SignUpModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable
 {
-    public LoginModel loginModel = new LoginModel();
     public SignUpModel signupModel = new SignUpModel();
     @FXML
     private Label isConnected;
@@ -40,19 +43,43 @@ public class SignUpController implements Initializable
     private Hyperlink hpLogin;
     @FXML
     private Button signUpButton;
+    @FXML
+    private Label successMessage;
     private Stage stage;
 
     // Check database connection
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        if (loginModel.isDbConnected())
+        if (signupModel.isDbConnected())
         {
             isConnected.setText("Connected");
         }
         else
         {
             isConnected.setText("Not Connected");
+        }
+    }
+
+    public void Signup(ActionEvent event)
+    {
+        registerUser();
+        successMessage.setText("User has been registered successfully!");
+    }
+
+    public void registerUser()
+    {
+        String firstname = txtFirstname.getText();
+        String lastname = txtLastname.getText();
+        String role = txtRole.getText();
+        String username = txtUsername.getText();
+        String password = txtPassword.getText();
+        String secret = txtSecret.getText();
+        String answer = txtAnswer.getText();
+        try {
+            signupModel.addDatabase(firstname, lastname, role, username, password, secret, answer);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

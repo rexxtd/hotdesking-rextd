@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
@@ -7,12 +8,17 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.SignUpController">
     <children>
-      <VBox alignment="TOP_CENTER" prefHeight="539.0" prefWidth="800.0" spacing="12.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+      <VBox alignment="TOP_CENTER" prefHeight="539.0" prefWidth="800.0" spacing="10.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
          <children>
-              <Label maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="150.0" text="SIGN UP" textAlignment="CENTER">
+              <Label maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="134.0" text="SIGN UP" textAlignment="CENTER">
                <font>
                   <Font size="35.0" />
                </font>
+            </Label>
+            <Label fx:id="successMessage" textFill="#0094ff">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </Label>
       
               <TextField fx:id="txtFirstname" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="First name" />
@@ -30,7 +36,7 @@
             </Hyperlink>
          </children>
       </VBox>
-        <Button fx:id="signUpButton" blendMode="DARKEN" defaultButton="true" layoutX="209.0" layoutY="501.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="53.0" prefWidth="378.0" style="-fx-background-color: white;" text="SIGN UP" textAlignment="CENTER" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="213.0">
+        <Button fx:id="signUpButton" blendMode="DARKEN" defaultButton="true" layoutX="209.0" layoutY="511.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#Signup" prefHeight="53.0" prefWidth="378.0" style="-fx-background-color: white;" text="SIGN UP" textAlignment="CENTER" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="213.0">
             <effect>
                 <Lighting bumpInput="$null">
                 </Lighting>
