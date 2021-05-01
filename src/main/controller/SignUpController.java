@@ -69,6 +69,8 @@ public class SignUpController implements Initializable
 
     public void registerUser()
     {
+        SQLConnection sqlConnection = new SQLConnection();
+        Connection connectionDB = sqlConnection.connect();
         String firstname = txtFirstname.getText();
         String lastname = txtLastname.getText();
         String role = txtRole.getText();
@@ -76,10 +78,20 @@ public class SignUpController implements Initializable
         String password = txtPassword.getText();
         String secret = txtSecret.getText();
         String answer = txtAnswer.getText();
-        try {
-            signupModel.addDatabase(firstname, lastname, role, username, password, secret, answer);
-        } catch (Exception e) {
+
+        String insertFields = "INSERT INTO Employee (firstname, lastname, role, username, password, secret_qs, answer) VALUES ('" ;
+        String insertValues =  firstname + "','" + lastname + "','" + role + "','" + username + "','" + password + "','" + secret + "','" + answer + "')";
+        String query = insertFields + insertValues;
+
+        try
+        {
+            Statement statement = connectionDB.createStatement();
+            statement.executeUpdate(query);
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
+            e.getCause();
         }
     }
 
