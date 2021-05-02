@@ -49,4 +49,40 @@ public class SignUpModel
             e.getCause();
         }
     }
+
+    //checking username exist method
+    public boolean accountExist(String username) throws SQLException
+    {
+        SQLConnection sqlConnection = new SQLConnection();
+        Connection connectionDB = sqlConnection.connect();
+
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        String query = "select * from employee where username = ?";
+        try
+        {
+            preparedStatement = connectionDB.prepareStatement(query);
+            preparedStatement.setString(1, username);
+
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next())
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+        finally
+        {
+            preparedStatement.close();
+            resultSet.close();
+        }
+    }
 }

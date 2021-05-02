@@ -1,5 +1,6 @@
 package main.controller;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,8 +30,6 @@ public class ResetController implements Initializable
     private TextField txtSecret;
     @FXML
     private TextField txtAnswer;
-    @FXML
-    private Button confirmButton;
     @FXML
     private Label failMessage;
     private Stage stage;

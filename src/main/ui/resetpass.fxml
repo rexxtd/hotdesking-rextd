@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
@@ -34,17 +33,25 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="txtUsername" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="63.0" prefWidth="300.0">
+            <Label fx:id="txtNewPass" style="-fx-font-weight: bold; -fx-font-size: 32;" textAlignment="CENTER">
+               <font>
+                  <Font size="26.0" />
+               </font>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets top="7.0" />
                </VBox.margin>
-            </TextField>
+            </Label>
+            <Button fx:id="copyButton" mnemonicParsing="false" onAction="#Copy" text="Copy">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
             <Label text="Remember our staffs will never ask for your password" textFill="RED">
                <font>
                   <Font size="20.0" />
                </font>
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="10.0" />
                </VBox.margin>
             </Label>
          </children>

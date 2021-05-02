@@ -15,9 +15,8 @@ import main.model.SignUpModel;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable
@@ -40,11 +39,9 @@ public class SignUpController implements Initializable
     @FXML
     private TextField txtAnswer;
     @FXML
-    private Hyperlink hpLogin;
-    @FXML
-    private Button signUpButton;
-    @FXML
     private Label successMessage;
+    @FXML
+    private Label failMessage;
     private Stage stage;
 
     // Check database connection
@@ -67,10 +64,11 @@ public class SignUpController implements Initializable
     }
 
     //get signup information from user
-    public void registerUser() throws SQLException {
+    public void registerUser() throws SQLException
+    {
         String firstname = txtFirstname.getText();
         String lastname = txtLastname.getText();
-        String role = txtRole.getText();
+        String role = txtRole.getText().toLowerCase();
         String username = txtUsername.getText();
         String password = txtPassword.getText();
         String secret = txtSecret.getText();
@@ -78,12 +76,35 @@ public class SignUpController implements Initializable
 
         if (firstname.trim().isEmpty() || lastname.trim().isEmpty() || role.trim().isEmpty() || username.trim().isEmpty() || password.trim().isEmpty() || secret.trim().isEmpty() || answer.trim().isEmpty())
         {
-            successMessage.setText("Please provide all information!");
+            successMessage.setText(null);
+            failMessage.setText("Please provide all information!");
         }
+
         else
         {
-            signupModel.addDatabase(firstname, lastname, role, username, password, secret, answer);
-            successMessage.setText("User has been registered successfully!");
+            //check if username existed or not
+            if (signupModel.accountExist(username))
+            {
+                //check if role is correct or not
+                if (role.equals("admin") || role.equals("staff"))
+                {
+                    //add account to database
+                    signupModel.addDatabase(firstname, lastname, role, username, password, secret, answer);
+
+                    failMessage.setText(null);
+                    successMessage.setText("User has been registered successfully!");
+                }
+                else
+                {
+                    successMessage.setText(null);
+                    failMessage.setText("Role can only be 'Staff' or 'Admin' !");
+                }
+            }
+            else
+            {
+                successMessage.setText(null);
+                failMessage.setText("Account existed. Please login or reset password!");
+            }
         }
     }
 

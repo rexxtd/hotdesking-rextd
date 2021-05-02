@@ -20,10 +20,13 @@
                   <Font size="35.0" />
                </font>
             </Label>
-            <Label fx:id="successMessage" textFill="#ff0b00">
+            <Label fx:id="failMessage" textFill="#ff0b00">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <graphic>
+                  <Label fx:id="successMessage" textFill="#00dfff" />
+               </graphic>
             </Label>
       
               <TextField fx:id="txtFirstname" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="First name" />

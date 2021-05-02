@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 public class ResetModel {
     Connection connection;
+    public static String account;
 
     public ResetModel() {
         connection = SQLConnection.connect();
@@ -40,6 +41,7 @@ public class ResetModel {
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next())
             {
+                account = username;
                 return true;
             }
             else
@@ -56,5 +58,10 @@ public class ResetModel {
             preparedStatement.close();
             resultSet.close();
         }
+    }
+
+    public String getAccount()
+    {
+        return account;
     }
 }

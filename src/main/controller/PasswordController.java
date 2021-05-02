@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 
 import main.model.PasswordModel;
 
@@ -24,15 +26,10 @@ public class PasswordController implements Initializable
     @FXML
     private Label isConnected;
     @FXML
-    private TextField txtUsername;
+    private Label txtNewPass;
     @FXML
-    private TextField txtSecret;
-    @FXML
-    private TextField txtAnswer;
-    @FXML
-    private Button confirmButton;
+    private Button copyButton;
     private Stage stage;
-    private Boolean check = false;
 
     // Check database connection
     @Override
@@ -46,6 +43,15 @@ public class PasswordController implements Initializable
         {
             isConnected.setText("Not Connected");
         }
+        //display random password and save it to database
+        setPassword();
+    }
+
+    public void setPassword()
+    {
+        String newPass = passwordModel.passwordGenerate(16, 4);
+        txtNewPass.setText(newPass);
+        passwordModel.addPassword(newPass);
     }
 
     public void loginPage(ActionEvent event) throws IOException
@@ -55,5 +61,17 @@ public class PasswordController implements Initializable
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    //copy new password to clipboard
+    public void Copy(ActionEvent event) throws IOException
+    {
+        copyButton.setText("Copied");
+        String copyText = txtNewPass.getText();
+
+        final Clipboard clipboard = Clipboard.getSystemClipboard();
+        final ClipboardContent content = new ClipboardContent();
+        content.putString(copyText);
+        clipboard.setContent(content);
     }
 }
