@@ -28,6 +28,7 @@ public class SignUpModel
         }
     }
 
+    //add information to database
     public void addDatabase(String firstname,String lastname,String role,String username,String password,String secret,String answer) throws SQLException
     {
         SQLConnection sqlConnection = new SQLConnection();

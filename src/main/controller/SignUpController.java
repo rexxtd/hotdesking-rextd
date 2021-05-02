@@ -10,7 +10,7 @@ import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import main.SQLConnection;
-import main.model.LoginModel;
+
 import main.model.SignUpModel;
 
 import java.io.IOException;
@@ -61,11 +61,13 @@ public class SignUpController implements Initializable
         }
     }
 
+    //what happen when click sign up button
     public void Signup(ActionEvent event) throws SQLException {
         registerUser();
         successMessage.setText("User has been registered successfully!");
     }
 
+    //get signup information from user
     public void registerUser() throws SQLException {
         String firstname = txtFirstname.getText();
         String lastname = txtLastname.getText();
