@@ -10,7 +10,7 @@ import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
-import main.model.PasswordGenModel;
+import main.model.PasswordModel;
 
 
 import java.io.IOException;
@@ -18,36 +18,27 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class PasswordGenController implements Initializable
+public class PasswordController implements Initializable
 {
-    public PasswordGenModel passwordGenModel = new PasswordGenModel();
+    public PasswordModel passwordModel = new PasswordModel();
     @FXML
     private Label isConnected;
     @FXML
-    private TextField txtFirstname;
-    @FXML
-    private TextField txtLastname;
-    @FXML
-    private TextField txtRole;
-    @FXML
     private TextField txtUsername;
-    @FXML
-    private PasswordField txtPassword;
     @FXML
     private TextField txtSecret;
     @FXML
     private TextField txtAnswer;
     @FXML
-    private Hyperlink hpLogin;
-    @FXML
-    private Button signUpButton;
+    private Button confirmButton;
     private Stage stage;
+    private Boolean check = false;
 
     // Check database connection
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        if (passwordGenModel.isDbConnected())
+        if (passwordModel.isDbConnected())
         {
             isConnected.setText("Connected");
         }
@@ -55,5 +46,14 @@ public class PasswordGenController implements Initializable
         {
             isConnected.setText("Not Connected");
         }
+    }
+
+    public void loginPage(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/login.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

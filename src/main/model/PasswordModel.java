@@ -8,24 +8,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PasswordGenModel
-{
+public class PasswordModel {
     Connection connection;
-    public PasswordGenModel()
-    {
+
+    public PasswordModel() {
         connection = SQLConnection.connect();
         if (connection == null)
             System.exit(1);
     }
 
-    public Boolean isDbConnected()
-    {
-        try
-        {
+    public Boolean isDbConnected() {
+        try {
             return !connection.isClosed();
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             return false;
         }
     }

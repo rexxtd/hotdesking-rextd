@@ -24,23 +24,13 @@ public class ResetController implements Initializable
     @FXML
     private Label isConnected;
     @FXML
-    private TextField txtFirstname;
-    @FXML
-    private TextField txtLastname;
-    @FXML
-    private TextField txtRole;
-    @FXML
     private TextField txtUsername;
-    @FXML
-    private PasswordField txtPassword;
     @FXML
     private TextField txtSecret;
     @FXML
     private TextField txtAnswer;
     @FXML
-    private Hyperlink hpLogin;
-    @FXML
-    private Button signUpButton;
+    private Button confirmButton;
     private Stage stage;
     private Boolean check = false;
 
@@ -59,7 +49,7 @@ public class ResetController implements Initializable
     }
 
     //system will confirm if information is correct
-    public void Confirm() throws SQLException
+    /*public void Confirm() throws SQLException
     {
         try
         {
@@ -77,25 +67,22 @@ public class ResetController implements Initializable
         {
             e.printStackTrace();
         }
-    }
+    }*/
 
-    public void resetPage(ActionEvent event) throws IOException
-    {
-        //Confirm();
-        //if (check)
-        {
-            Parent root = FXMLLoader.load(getClass().getResource("../ui/reset.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-    }
-
-    //switch to resetPassword scene
+    //switch to login scene
     public void loginPage(ActionEvent event) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("../ui/login.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    //switch to resetPassword scene
+    public void resetPage(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/resetpass.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

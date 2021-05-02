@@ -64,7 +64,6 @@ public class SignUpController implements Initializable
     //what happen when click sign up button
     public void Signup(ActionEvent event) throws SQLException {
         registerUser();
-        successMessage.setText("User has been registered successfully!");
     }
 
     //get signup information from user
@@ -77,7 +76,15 @@ public class SignUpController implements Initializable
         String secret = txtSecret.getText();
         String answer = txtAnswer.getText();
 
-        signupModel.addDatabase(firstname, lastname, role, username, password, secret, answer);
+        if (firstname == " " || lastname == " " || role == " " || username == " " || password == " " || secret == " " || answer == " ")
+        {
+            successMessage.setText("Please provide all information!");
+        }
+        else
+        {
+            signupModel.addDatabase(firstname, lastname, role, username, password, secret, answer);
+            successMessage.setText("User has been registered successfully!");
+        }
     }
 
     //switch to resetPassword scene
