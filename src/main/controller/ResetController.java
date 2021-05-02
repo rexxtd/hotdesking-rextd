@@ -31,6 +31,8 @@ public class ResetController implements Initializable
     private TextField txtAnswer;
     @FXML
     private Button confirmButton;
+    @FXML
+    private Label failMessage;
     private Stage stage;
     private Boolean check = false;
 
@@ -49,7 +51,7 @@ public class ResetController implements Initializable
     }
 
     //system will confirm if information is correct
-    /*public void Confirm() throws SQLException
+    public void Confirm() throws SQLException
     {
         try
         {
@@ -59,7 +61,7 @@ public class ResetController implements Initializable
             }
             else
             {
-                isConnected.setText("Invalid username or password. Please try again");
+                failMessage.setText("Invalid username or secret question/answer. Please try again");
                 check = false;
             }
         }
@@ -67,7 +69,7 @@ public class ResetController implements Initializable
         {
             e.printStackTrace();
         }
-    }*/
+    }
 
     //switch to login scene
     public void loginPage(ActionEvent event) throws IOException
@@ -80,12 +82,15 @@ public class ResetController implements Initializable
     }
 
     //switch to resetPassword scene
-    public void resetPage(ActionEvent event) throws IOException
-    {
-        Parent root = FXMLLoader.load(getClass().getResource("../ui/resetpass.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void resetPage(ActionEvent event) throws IOException, SQLException {
+        Confirm();
+        if (check == true)
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("../ui/resetpass.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 }

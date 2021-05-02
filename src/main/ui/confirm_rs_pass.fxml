@@ -24,8 +24,13 @@
                   <Font size="19.0" />
                </font>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets top="5.0" />
                </VBox.margin>
+            </Label>
+            <Label fx:id="failMessage" textFill="#ff3a00">
+               <font>
+                  <Font size="17.0" />
+               </font>
             </Label>
             <TextField fx:id="txtUsername" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Username">
                <VBox.margin>
@@ -42,7 +47,7 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </TextField>
-            <Hyperlink onAction="#loginPage" prefHeight="33.0" prefWidth="391.0" text="Try log in instead">
+            <Hyperlink onAction="#loginPage" prefHeight="33.0" prefWidth="352.0" text="Try log in instead">
                <graphic>
                   <Label prefHeight="25.0" prefWidth="214.0" text="Remember your password now?" textAlignment="CENTER" />
                </graphic>
@@ -55,7 +60,7 @@
             </Hyperlink>
          </children>
       </VBox>
-        <Button fx:id="confirmButton" blendMode="DARKEN" defaultButton="true" layoutX="232.0" layoutY="425.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#resetPage" prefHeight="50.0" prefWidth="341.0" style="-fx-background-color: white;" text="CONFIRM" textAlignment="CENTER" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="227.0">
+        <Button fx:id="confirmButton" blendMode="DARKEN" defaultButton="true" layoutX="232.0" layoutY="438.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#resetPage" prefHeight="50.0" prefWidth="341.0" style="-fx-background-color: white;" text="CONFIRM" textAlignment="CENTER" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="227.0">
             <effect>
                 <Lighting bumpInput="$null">
                 </Lighting>

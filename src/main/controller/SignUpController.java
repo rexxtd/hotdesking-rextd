@@ -76,7 +76,7 @@ public class SignUpController implements Initializable
         String secret = txtSecret.getText();
         String answer = txtAnswer.getText();
 
-        if (firstname == " " || lastname == " " || role == " " || username == " " || password == " " || secret == " " || answer == " ")
+        if (firstname.trim().isEmpty() || lastname.trim().isEmpty() || role.trim().isEmpty() || username.trim().isEmpty() || password.trim().isEmpty() || secret.trim().isEmpty() || answer.trim().isEmpty())
         {
             successMessage.setText("Please provide all information!");
         }
