@@ -67,7 +67,7 @@ public class PasswordModel {
         Connection connectionDB = sqlConnection.connect();
 
         String insertFields = "UPDATE Employee SET password = '" ;
-        String insertValues =  newPass + "' WHERE username = " + resetModel.getAccount();
+        String insertValues =  newPass + "' WHERE username = '" + resetModel.getAccount() + "'";
         String query = insertFields + insertValues;
 
         try

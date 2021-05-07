@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
@@ -20,6 +21,7 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable
 {
     public LoginModel loginModel = new LoginModel();
+    public String username = "asdasd";
     @FXML
     private Label isConnected;
     @FXML
@@ -28,6 +30,8 @@ public class LoginController implements Initializable
     private TextField txtPassword;
     @FXML
     private Stage stage;
+    @FXML
+    private Button loginButton;
 
     // Check database connection
     @Override
@@ -49,19 +53,31 @@ public class LoginController implements Initializable
     {
         try
         {
-            if (loginModel.isLogin(txtUsername.getText(),txtPassword.getText()))
+            username = txtUsername.getText();
+            if (loginModel.isLogin(username,txtPassword.getText()))
             {
-                isConnected.setText("Logged in successfully");
+                //isConnected.setText("Logged in successfully");
+                loginSuccess();
             }
             else
             {
                 isConnected.setText("Invalid username or password. Please try again");
             }
         }
-        catch (SQLException e)
+        catch (SQLException | IOException e)
         {
             e.printStackTrace();
         }
+    }
+
+    //change to homepage if login successfully
+    public void loginSuccess() throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/home.fxml"));
+        stage = (Stage) loginButton.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     //switch to signUp scene
