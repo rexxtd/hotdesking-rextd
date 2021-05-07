@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable
 {
     public LoginModel loginModel = new LoginModel();
-    public String username = "asdasd";
+    public static String username = "";
     @FXML
     private Label isConnected;
     @FXML
@@ -32,6 +32,8 @@ public class LoginController implements Initializable
     private Stage stage;
     @FXML
     private Button loginButton;
+    @FXML
+    private Label failMessage;
 
     // Check database connection
     @Override
@@ -53,15 +55,14 @@ public class LoginController implements Initializable
     {
         try
         {
-            username = txtUsername.getText();
+            username = txtUsername.getText(); // use for get username on the homepage for greeting message
             if (loginModel.isLogin(username,txtPassword.getText()))
             {
-                //isConnected.setText("Logged in successfully");
                 loginSuccess();
             }
             else
             {
-                isConnected.setText("Invalid username or password. Please try again");
+                failMessage.setText("Invalid username or password. Please try again");
             }
         }
         catch (SQLException | IOException e)

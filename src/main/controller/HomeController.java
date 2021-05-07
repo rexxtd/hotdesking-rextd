@@ -10,6 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import main.FxmlLoader;
 import main.controller.LoginController;
 import main.model.HomeModel;
 
@@ -24,6 +27,8 @@ public class HomeController implements Initializable
     public HomeModel homeModel = new HomeModel();
     @FXML
     private Label isConnected;
+    @FXML
+    private BorderPane mainPane;
 
     // Check database connection
     @Override
@@ -33,5 +38,13 @@ public class HomeController implements Initializable
         {
             isConnected.setText("Welcome, " + loginController.username);
         }
+    }
+
+    @FXML
+    private void loadBooking(ActionEvent event) throws IOException
+    {
+        FxmlLoader object = new FxmlLoader();
+        Pane view = object.getPage("bookingscreen");
+        mainPane.setCenter(view);
     }
 }
