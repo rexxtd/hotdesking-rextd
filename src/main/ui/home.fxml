@@ -15,7 +15,7 @@
          <left>
             <VBox prefHeight="390.0" prefWidth="150.0" spacing="30.0" style="-fx-background-color: #eee;" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="25.0" layoutY="65.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #eee;" text="Home" textAlignment="CENTER">
+                  <Button layoutX="25.0" layoutY="65.0" mnemonicParsing="false" onAction="#loadHome" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #eee;" text="Home" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>

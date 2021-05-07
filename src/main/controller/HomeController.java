@@ -47,4 +47,12 @@ public class HomeController implements Initializable
         Pane view = object.getPage("bookingscreen");
         mainPane.setCenter(view);
     }
+
+    @FXML
+    private void loadHome(ActionEvent event) throws IOException
+    {
+        FxmlLoader object = new FxmlLoader();
+        Pane view = object.getPage("homescreen");
+        mainPane.setCenter(view);
+    }
 }
