@@ -1,8 +1,10 @@
 package main;
 
+/* for loading multiple fxml file in a single controller */
+/* it read fxml fileName when action event happen and return the value */
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
-import main.controller.HomeController;
 
 import java.net.URL;
 

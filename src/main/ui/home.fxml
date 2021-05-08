@@ -87,6 +87,6 @@
             </VBox>
          </top>
       </BorderPane>
-      <Label fx:id="isConnected" alignment="CENTER_RIGHT" layoutX="675.0" layoutY="14.0" prefHeight="21.0" prefWidth="111.0" textAlignment="RIGHT" AnchorPane.bottomAnchor="565.0" AnchorPane.leftAnchor="675.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <Label fx:id="isConnected" alignment="CENTER_RIGHT" layoutX="639.0" layoutY="14.0" prefHeight="25.0" prefWidth="147.0" style="-fx-font-style: italic; -fx-underline: true; -fx-font-size: 16;" textAlignment="RIGHT" AnchorPane.leftAnchor="639.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
    </children>
 </AnchorPane>

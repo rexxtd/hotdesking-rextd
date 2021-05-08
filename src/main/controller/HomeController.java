@@ -9,9 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
-
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+
 import main.FxmlLoader;
 import main.controller.LoginController;
 import main.model.HomeModel;
@@ -38,8 +38,14 @@ public class HomeController implements Initializable
         {
             isConnected.setText("Welcome, " + loginController.username);
         }
+
+        //display default content for the first time
+        FxmlLoader object = new FxmlLoader();
+        Pane view = object.getPage("homescreen");
+        mainPane.setCenter(view);
     }
 
+    //display booking inside homepage when click on booking button
     @FXML
     private void loadBooking(ActionEvent event) throws IOException
     {
@@ -48,6 +54,8 @@ public class HomeController implements Initializable
         mainPane.setCenter(view);
     }
 
+
+    //display default content inside homepage when click on home button
     @FXML
     private void loadHome(ActionEvent event) throws IOException
     {
