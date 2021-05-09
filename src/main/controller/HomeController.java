@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
+import javafx.stage.Stage;
 import main.FxmlLoader;
 import main.controller.LoginController;
 import main.model.HomeModel;
@@ -54,6 +55,16 @@ public class HomeController implements Initializable
         mainPane.setCenter(view);
     }
 
+    //display new rules in a new window when user click on "Learn more"
+    @FXML
+    private void learnMore(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/learnmore.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
     //display default content inside homepage when click on home button
     @FXML

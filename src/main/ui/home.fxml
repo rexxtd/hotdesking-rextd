@@ -72,7 +72,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Hyperlink maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="93.0" text="Learn more">
+                  <Hyperlink maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#learnMore" prefHeight="33.0" prefWidth="93.0" text="Learn more">
                      <font>
                         <Font size="16.0" />
                      </font>
