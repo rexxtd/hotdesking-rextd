@@ -55,15 +55,16 @@ public class HomeController implements Initializable
         mainPane.setCenter(view);
     }
 
-    //display new rules in a new window when user click on "Learn more"
+    //display rules in a new window when user click on "Learn more"
     @FXML
     private void learnMore(ActionEvent event) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("../ui/learnmore.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent anotherRoot = FXMLLoader.load(getClass().getResource("../ui/learnmore.fxml"));
+        Stage anotherStage = new Stage();
+        Scene anotherScene = new Scene(anotherRoot);
+        anotherStage.setScene(anotherScene);
+        anotherStage.show();
+        anotherStage.setTitle("Learn more");
     }
 
     //display default content inside homepage when click on home button
