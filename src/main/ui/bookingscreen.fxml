@@ -24,6 +24,14 @@
                   <Insets top="35.0" />
                </VBox.margin>
             </Label>
+            <Label fx:id="failMessage" textFill="RED">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
             <HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="600.0">
                <children>
                   <Label prefHeight="40.0" prefWidth="41.0" text="Date">
@@ -34,10 +42,13 @@
                         <Insets right="35.0" />
                      </HBox.margin>
                   </Label>
-                  <DatePicker fx:id="txtDate" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="210.0" />
+                  <DatePicker fx:id="dpDate" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="210.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></DatePicker>
                </children>
                <VBox.margin>
-                  <Insets top="30.0" />
+                  <Insets top="20.0" />
                </VBox.margin>
             </HBox>
             <HBox prefHeight="90.0" prefWidth="650.0">
@@ -50,7 +61,7 @@
                         <Insets left="182.0" right="30.0" />
                      </HBox.margin>
                   </Label>
-                  <ChoiceBox prefHeight="36.0" prefWidth="61.0">
+                  <ChoiceBox fx:id="cbhour" prefHeight="36.0" prefWidth="61.0">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin></ChoiceBox>
@@ -62,12 +73,15 @@
                         <Insets left="6.0" />
                      </HBox.margin>
                   </Label>
-                  <ChoiceBox prefHeight="36.0" prefWidth="61.0">
+                  <ChoiceBox fx:id="cbminute" prefHeight="36.0" prefWidth="61.0">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
                   </ChoiceBox>
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </HBox>
             <Button blendMode="DARKEN" defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#confirmBooking" prefHeight="55.0" prefWidth="325.0" style="-fx-background-color: white;" text="Continue" textAlignment="CENTER">
                <font>

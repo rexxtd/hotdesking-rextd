@@ -6,32 +6,80 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import main.model.BookCheckingModel;
+import main.controller.LoginController;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 public class BookCheckingController
 {
+    public LoginController loginController = new LoginController();
+    public BookCheckingModel bookCheckingModel = new BookCheckingModel();
     @FXML
-    private DatePicker txtDate;
+    private ChoiceBox<String> cbhour;
+    @FXML
+    private ChoiceBox<String> cbminute;
+    @FXML
+    private DatePicker dpDate;
+    @FXML
+    private Label failMessage;
 
 
-    public void registerUser() throws SQLException
+    public void initialize()
     {
-        String date = txtDate.getValue().toString();
+        //add and display choice for user to pick a time for sitting
+        cbhour.getItems().addAll("08", "09", "10", "11", "12", "13", "14", "15", "16", "17");
+        cbminute.getItems().addAll("00", "15", "30", "45");
+    }
+
+    //get information for date and time
+    public boolean getInput() throws SQLException
+    {
+        try
+        {
+            String username = loginController.username;
+            String date = dpDate.getValue().toString();
+            String time = cbhour.getValue().toString() + ":" + cbminute.getValue().toString();
+
+            //check if the data is duplicate to database
+            if (bookCheckingModel.bookingExist(username, date, time))
+            {
+                //add date and time to database
+                bookCheckingModel.addDateTime(username, date, time);
+                return true;
+            }
+            else
+            {
+                failMessage.setText("You have a sit already, please choose another date/time");
+                return false;
+            }
+        }
+        catch (Exception e)
+        {
+            failMessage.setText("Please provide all information!");
+            return false;
+        }
     }
 
     //action event when user click continue button in booking tab
     @FXML
-    public void confirmBooking(ActionEvent event) throws IOException
+    public void confirmBooking(ActionEvent event) throws IOException, SQLException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("../ui/login.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if(getInput())
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("../ui/login.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 }

@@ -74,6 +74,7 @@ public class SignUpController implements Initializable
         String secret = txtSecret.getText();
         String answer = txtAnswer.getText();
 
+        //check if text field is empty
         if (firstname.trim().isEmpty() || lastname.trim().isEmpty() || role.trim().isEmpty() || username.trim().isEmpty() || password.trim().isEmpty() || secret.trim().isEmpty() || answer.trim().isEmpty())
         {
             successMessage.setText(null);
