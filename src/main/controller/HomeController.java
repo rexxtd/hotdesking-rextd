@@ -76,4 +76,13 @@ public class HomeController implements Initializable
         Pane view = object.getPage("homescreen");
         mainPane.setCenter(view);
     }
+
+    //display booking history content when user click on "View history"
+    @FXML
+    private void loadHistory(ActionEvent event) throws IOException
+    {
+        FxmlLoader object = new FxmlLoader();
+        Pane view = object.getPage("historyscreen");
+        mainPane.setCenter(view);
+    }
 }

@@ -31,7 +31,7 @@
                         <Insets bottom="5.0" left="15.0" right="5.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #eee;" text="View history">
+                  <Button mnemonicParsing="false" onAction="#loadHistory" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #eee;" text="View history">
                      <font>
                         <Font size="18.0" />
                      </font>

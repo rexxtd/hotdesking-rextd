@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.HistoryController">
+   <children>
+      <TableView fx:id="table" layoutX="73.0" layoutY="45.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="505.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="72.0" AnchorPane.topAnchor="45.0">
+        <columns>
+          <TableColumn fx:id="col_id" prefWidth="110.0" text="Booking ID" />
+          <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="110.0" text="Date" />
+            <TableColumn fx:id="col_time" prefWidth="110.0" text="Time" />
+            <TableColumn fx:id="col_sit" prefWidth="110.0" text="Sit" />
+            <TableColumn fx:id="col_view" prefWidth="65.0" text="Action" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
