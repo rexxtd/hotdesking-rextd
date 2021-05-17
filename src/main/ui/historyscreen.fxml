@@ -11,8 +11,8 @@
           <TableColumn fx:id="col_id" prefWidth="110.0" text="Booking ID" />
           <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="110.0" text="Date" />
             <TableColumn fx:id="col_time" prefWidth="110.0" text="Time" />
-            <TableColumn fx:id="col_sit" prefWidth="110.0" text="Sit" />
-            <TableColumn fx:id="col_view" prefWidth="65.0" text="Action" />
+            <TableColumn fx:id="col_sit" prefWidth="89.0" text="Seat" />
+            <TableColumn fx:id="col_cancel" prefWidth="86.0" text="Action" />
         </columns>
       </TableView>
    </children>

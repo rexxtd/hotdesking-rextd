@@ -29,7 +29,7 @@ public class HistoryController
     @FXML
     private TableColumn<HistoryModel, String> col_sit;
     @FXML
-    private TableColumn<HistoryModel, Button> col_view;
+    private TableColumn<HistoryModel, Button> col_cancel;
     @FXML
 
     ObservableList<HistoryModel> oblist = FXCollections.observableArrayList();
@@ -50,7 +50,7 @@ public class HistoryController
             {
                 oblist.add(new HistoryModel(rs.getString("id"), rs.getString("date"),
                                             rs.getString("time"), rs.getString("sit"),
-                                            new Button("View")));
+                                            new Button("cancel")));
             }
         }
         catch (SQLException e)
@@ -62,7 +62,7 @@ public class HistoryController
         col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         col_time.setCellValueFactory(new PropertyValueFactory<>("time"));
         col_sit.setCellValueFactory(new PropertyValueFactory<>("sit"));
-        col_view.setCellValueFactory(new PropertyValueFactory<>("view"));
+        col_cancel.setCellValueFactory(new PropertyValueFactory<>("cancel"));
 
         table.setItems(oblist);
     }

@@ -24,7 +24,8 @@ public class FxmlLoader
 
             catch (Exception e)
             {
-                System.out.println("No page " + fileName + " please check FxmlLoader.");
+                e.printStackTrace();
+                e.getCause();
             }
         return view;
     }
