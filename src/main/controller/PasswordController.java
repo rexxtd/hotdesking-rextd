@@ -14,7 +14,6 @@ import javafx.scene.input.ClipboardContent;
 
 import main.model.PasswordModel;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;

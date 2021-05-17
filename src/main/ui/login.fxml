@@ -66,7 +66,7 @@
 
             </Label>
       <Button fx:id="createAccount" accessibleRole="HYPERLINK" layoutX="398.0" layoutY="521.0" mnemonicParsing="false" onAction="#signUp" prefHeight="31.0" prefWidth="156.0" text="Create your account" textAlignment="CENTER" />
-      <Label accessibleRole="HYPERLINK" layoutX="267.0" layoutY="527.0" text="Already a member?" />
+      <Label accessibleRole="HYPERLINK" layoutX="260.0" layoutY="527.0" prefHeight="21.0" prefWidth="135.0" text="Not a member yet?" />
 
 
     </children>

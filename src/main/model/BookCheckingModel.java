@@ -4,6 +4,10 @@ import main.SQLConnection;
 import org.sqlite.SQLiteConnection;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class BookCheckingModel
 {
@@ -13,7 +17,7 @@ public class BookCheckingModel
         SQLConnection sqlConnection = new SQLConnection();
         Connection connectionDB = sqlConnection.connect();
 
-        String insertFields = "INSERT INTO Booking (username, day, time) VALUES ('" ;
+        String insertFields = "INSERT INTO Booking (username, date, time) VALUES ('" ;
         String insertValues =  username + "','" + date + "','" + time + "')";
         String query = insertFields + insertValues;
 
@@ -29,7 +33,7 @@ public class BookCheckingModel
         }
     }
 
-    //checking username exist method
+    //checking if user have booking in the future
     public boolean bookingExist(String user, String date, String time) throws SQLException
     {
         SQLConnection sqlConnection = new SQLConnection();
@@ -38,22 +42,31 @@ public class BookCheckingModel
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        String query = "select * from booking where username = ? and day = ? and time = ?";
+        String query = "select * from booking where username = ?";
         try
         {
             preparedStatement = connectionDB.prepareStatement(query);
             preparedStatement.setString(1, user);
-            preparedStatement.setString(2, date);
-            preparedStatement.setString(3, time);
 
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next())
             {
                 return false;
             }
+
             else
             {
-                return true;
+                //convert string format to date format
+                LocalDate inp = LocalDate.parse(date);
+
+                //get current date
+                LocalDate localDate = LocalDate.now();
+
+                //compare booking date and current date
+                if (inp.isEqual(localDate) || inp.isBefore(localDate))
+                    return false;
+                else
+                    return true;
             }
         }
         catch (Exception e)

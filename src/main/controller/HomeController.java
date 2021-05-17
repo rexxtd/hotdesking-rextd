@@ -85,4 +85,15 @@ public class HomeController implements Initializable
         Pane view = object.getPage("historyscreen");
         mainPane.setCenter(view);
     }
+
+    //logout user
+    @FXML
+    public void Logout(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/login.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
