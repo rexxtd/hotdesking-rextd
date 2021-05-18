@@ -42,7 +42,6 @@ public class HistoryModel
         });
     }
 
-
     public String getId()
     {
         return id;

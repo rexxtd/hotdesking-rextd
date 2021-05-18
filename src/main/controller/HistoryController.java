@@ -3,16 +3,25 @@ package main.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableColumn;
+import javafx.stage.Stage;
 import main.SQLConnection;
 import main.model.HistoryModel;
+import java.net.URL;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.sql.*;
+import java.util.Observable;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,7 +43,7 @@ public class HistoryController
 
     ObservableList<HistoryModel> oblist = FXCollections.observableArrayList();
 
-    public void initialize() throws SQLException
+    public void initialize()
     {
         try
         {
@@ -57,7 +66,11 @@ public class HistoryController
         {
             Logger.getLogger(HistoryController.class.getName()).log(Level.SEVERE, null, e);
         }
+        UpdateTable();
+    }
 
+    public void UpdateTable()
+    {
         col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         col_time.setCellValueFactory(new PropertyValueFactory<>("time"));
@@ -65,5 +78,36 @@ public class HistoryController
         col_cancel.setCellValueFactory(new PropertyValueFactory<>("cancel"));
 
         table.setItems(oblist);
+    }
+
+    public void deleteBooking()
+    {
+        SQLConnection sqlConnection = new SQLConnection();
+        Connection connectionDB = sqlConnection.connect();
+
+        String query = "DELETE FROM Booking WHERE id = ?";
+
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try
+        {
+            ObservableList<HistoryModel> historyModels;
+            historyModels = table.getSelectionModel().getSelectedItems();
+            System.out.println("historyModels.get(0).getId()");
+
+            preparedStatement = connectionDB.prepareStatement(query);
+            preparedStatement.setString(1, historyModels.get(0).getId());
+
+            resultSet = preparedStatement.executeQuery();
+            Statement statement = connectionDB.createStatement();
+            statement.executeUpdate(query);
+
+            UpdateTable();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            e.getCause();
+        }
     }
 }
