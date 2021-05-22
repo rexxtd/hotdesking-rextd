@@ -10,15 +10,14 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import main.model.BookCheckingModel;
 import main.controller.LoginController;
 
+import javax.swing.*;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ResourceBundle;
 
 public class BookCheckingController
 {
@@ -36,7 +35,6 @@ public class BookCheckingController
     private Label failMessage2;
     @FXML
     private Hyperlink clickHere;
-
 
     public void initialize()
     {

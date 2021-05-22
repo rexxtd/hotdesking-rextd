@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableColumn;
@@ -14,14 +15,17 @@ import main.model.HistoryModel;
 import main.model.BookCheckingModel;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
+import java.util.ResourceBundle;
 
-public class HistoryController
+public class HistoryController implements Initializable
 {
     int index = -1;
     static String id,date,time;
     ObservableList<HistoryModel> oblist;
 
+    private static HomeController homeController = new HomeController();
     private BookCheckingModel bookCheckingModel = new BookCheckingModel();
     @FXML
     private TableView<HistoryModel> table;
@@ -38,7 +42,7 @@ public class HistoryController
     @FXML
     private Label failMessage;
 
-    public void initialize()
+    public void initialize(URL location, ResourceBundle resources)
     {
         UpdateTable();
     }
@@ -52,7 +56,7 @@ public class HistoryController
         ObservableList<HistoryModel> list = FXCollections.observableArrayList();
         try
         {
-            PreparedStatement preparedStatement = connectionDB.prepareStatement("SELECT * FROM BOOKING");
+            PreparedStatement preparedStatement = connectionDB.prepareStatement("SELECT * FROM Booking WHERE username = '" + homeController.al_username + "';");
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next())
@@ -91,8 +95,8 @@ public class HistoryController
             return;
         }
         id = col_id.getCellData(index).toString();
-        date = col_date.getCellData(index).toString();
-        time = col_time.getCellData(index).toString();
+        date = col_date.getCellData(index);
+        time = col_time.getCellData(index);
     }
 
     // delete row from database

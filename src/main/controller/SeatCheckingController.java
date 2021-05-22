@@ -1,6 +1,7 @@
 package main.controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -19,53 +20,18 @@ import javafx.scene.control.Label;
 
 public class SeatCheckingController implements Initializable
 {
-    private int lastClickedIndex = -1;
-    @FXML
-    private Button H1;
-    @FXML
-    private Button H2;
-    @FXML
-    private Button H5;
-    @FXML
-    private Button H6;
-    @FXML
-    private Button H7;
-    @FXML
-    private Button H3;
-    @FXML
-    private Button H4;
-    @FXML
-    private Button V3;
-    @FXML
-    private Button V1;
-    @FXML
-    private Button V2;
-    @FXML
-    private Button V4;
-    @FXML
-    private Button V5;
-    @FXML
-    private Button V6;
-    @FXML
-    private Button V7;
-    @FXML
-    private Button V8;
-    @FXML
-    private Button V9;
+    private String lastClickedIndex = "";
     @FXML
     private Label txtSeat;
     @FXML
     private Label txtAvailability;
+    @FXML
+    private Button H1,H2,H3,H4,H5,H6,H7,V1,V2,V3,V4,V5,V6,V7,V8,V9;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        setUpButtonListeners();
-    }
-
-    public void setUpButtonListeners()
-    {
-
+       
     }
 
     //cancel booking and return to homepage

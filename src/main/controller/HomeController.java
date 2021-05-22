@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable
 {
+    static String al_username;
     public LoginController loginController = new LoginController();
     public HomeModel homeModel = new HomeModel();
     @FXML
@@ -38,7 +39,8 @@ public class HomeController implements Initializable
     {
         if (homeModel.isDbConnected())
         {
-            isConnected.setText("Welcome, " + loginController.username);
+            al_username = loginController.username;
+            isConnected.setText("Welcome, " + al_username);
         }
 
         //display default content for the first time
