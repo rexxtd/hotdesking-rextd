@@ -11,43 +11,23 @@ import javafx.stage.Stage;
 
 public class HistoryModel
 {
-    String id,date,time,sit;
-    Button cancel;
+    int id;
+    String date,time,seat;
 
-    public HistoryModel(String id, String date, String time, String sit, Button cancel)
+    public HistoryModel(Integer id, String date, String time, String seat)
     {
         this.id = id;
         this.date = date;
         this.time = time;
-        this.sit = sit;
-        this.cancel = cancel;
-
-        // open new window to cancel specific booking
-        cancel.setOnAction(e ->
-        {
-            Parent anotherRoot = null;
-            try
-            {
-                anotherRoot = FXMLLoader.load(getClass().getResource("../ui/cancelbooking.fxml"));
-            }
-            catch (IOException ioException)
-            {
-                ioException.printStackTrace();
-            }
-            Stage anotherStage = new Stage();
-            Scene anotherScene = new Scene(anotherRoot);
-            anotherStage.setScene(anotherScene);
-            anotherStage.show();
-            anotherStage.setTitle("Cancel Booking");
-        });
+        this.seat = seat;
     }
 
-    public String getId()
+    public int getId()
     {
         return id;
     }
 
-    public void setId(String id)
+    public void setId(int id)
     {
         this.id = id;
     }
@@ -72,23 +52,13 @@ public class HistoryModel
         this.time = time;
     }
 
-    public String getSit()
+    public String getSeat()
     {
-        return sit;
+        return seat;
     }
 
-    public void setSit(String sit)
+    public void setSeat(String seat)
     {
-        this.sit = sit;
-    }
-
-    public Button getCancel()
-    {
-        return cancel;
-    }
-
-    public void setCancel(Button cancel)
-    {
-        this.cancel = cancel;
+        this.seat = seat;
     }
 }

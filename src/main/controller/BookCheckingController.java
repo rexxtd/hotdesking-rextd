@@ -82,7 +82,7 @@ public class BookCheckingController
     {
         if(getInput())
         {
-            Parent root = FXMLLoader.load(getClass().getResource("../ui/login.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../ui/seatbooking.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

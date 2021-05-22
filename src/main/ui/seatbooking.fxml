@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.SeatCheckingController">
+   <children>
+      <ImageView fitHeight="504.0" fitWidth="450.0" layoutX="14.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="344.2588195800781" AnchorPane.topAnchor="48.0">
+         <image>
+            <Image url="@img/seat.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="H1" layoutX="48.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="56.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="H2" layoutX="159.0" layoutY="72.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="56.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="H5" layoutX="131.0" layoutY="492.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="56.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="H6" layoutX="201.0" layoutY="492.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="56.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="H7" layoutX="270.0" layoutY="492.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="56.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="H3" layoutX="243.0" layoutY="339.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="56.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="H4" layoutX="312.0" layoutY="339.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="34.0" prefWidth="56.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="V3" layoutX="48.0" layoutY="173.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="56.0" prefWidth="34.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="V1" layoutX="185.0" layoutY="159.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="56.0" prefWidth="34.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="V2" layoutX="186.0" layoutY="228.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="56.0" prefWidth="34.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="V4" layoutX="48.0" layoutY="243.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="56.0" prefWidth="34.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="V5" layoutX="48.0" layoutY="311.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="56.0" prefWidth="34.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="V6" layoutX="48.0" layoutY="382.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="56.0" prefWidth="34.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="V7" layoutX="48.0" layoutY="451.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="56.0" prefWidth="34.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="V8" layoutX="395.0" layoutY="408.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="56.0" prefWidth="34.0" style="-fx-background-color: #7ab648;" />
+      <Button fx:id="V9" layoutX="395.0" layoutY="470.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="56.0" prefWidth="34.0" style="-fx-background-color: #7ab648;" />
+      <Label layoutX="510.0" layoutY="354.0" text="Seat: ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="510.0" layoutY="410.0" text="Availability:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="490.0" layoutY="498.0" mnemonicParsing="false" onAction="#Confirm" prefHeight="40.0" prefWidth="110.0" text="Confirm" />
+      <Button layoutX="645.0" layoutY="498.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="40.0" prefWidth="110.0" text="Cancel" />
+      <Label layoutX="395.0" layoutY="16.0" prefHeight="88.0" prefWidth="300.0" text="Please choose your seat">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="327.0" layoutY="125.0" text=": Seat is available" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7ab648" height="27.0" layoutX="277.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="44.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c92d39" height="27.0" layoutX="277.0" layoutY="174.0" stroke="BLACK" strokeType="INSIDE" width="44.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ef8d22" height="27.0" layoutX="277.0" layoutY="228.0" stroke="BLACK" strokeType="INSIDE" width="44.0" />
+      <Label layoutX="327.0" layoutY="177.0" text=": Seat has been booked" />
+      <Label layoutX="327.0" layoutY="231.0" text=": Seat has been locked" />
+      <Label fx:id="txtSeat" layoutX="607.0" layoutY="354.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtAvailability" layoutX="609.0" layoutY="410.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

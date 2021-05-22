@@ -2,71 +2,72 @@ package main.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableColumn;
-import javafx.stage.Stage;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Label;
 import main.SQLConnection;
 import main.model.HistoryModel;
-import java.net.URL;
+import main.model.BookCheckingModel;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.sql.*;
-import java.util.Observable;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class HistoryController
 {
+    int index = -1;
+    static String id,date,time;
+    ObservableList<HistoryModel> oblist;
+
+    private BookCheckingModel bookCheckingModel = new BookCheckingModel();
     @FXML
     private TableView<HistoryModel> table;
     @FXML
-    private TableColumn<HistoryModel, String> col_id;
+    private TableColumn<HistoryModel, Integer> col_id;
     @FXML
     private TableColumn<HistoryModel, String> col_date;
     @FXML
     private TableColumn<HistoryModel, String> col_time;
     @FXML
-    private TableColumn<HistoryModel, String> col_sit;
+    private TableColumn<HistoryModel, String> col_seat;
     @FXML
-    private TableColumn<HistoryModel, Button> col_cancel;
+    private Label successMessage;
     @FXML
-
-    ObservableList<HistoryModel> oblist = FXCollections.observableArrayList();
+    private Label failMessage;
 
     public void initialize()
     {
+        UpdateTable();
+    }
+
+    public static ObservableList<HistoryModel> getDatausers()
+    {
+        //get connection from database to table
+        SQLConnection sqlConnection = new SQLConnection();
+        Connection connectionDB = sqlConnection.connect();
+
+        ObservableList<HistoryModel> list = FXCollections.observableArrayList();
         try
         {
-            //get connection from database to table
-            SQLConnection sqlConnection = new SQLConnection();
-            Connection connectionDB = sqlConnection.connect();
+            PreparedStatement preparedStatement = connectionDB.prepareStatement("SELECT * FROM BOOKING");
+            ResultSet rs = preparedStatement.executeQuery();
 
-            //statement for getting data
-            ResultSet rs = connectionDB.createStatement().executeQuery("select * from booking");
-
-            //add information to the table
             while (rs.next())
             {
-                oblist.add(new HistoryModel(rs.getString("id"), rs.getString("date"),
-                                            rs.getString("time"), rs.getString("sit"),
-                                            new Button("cancel")));
+                list.add(new HistoryModel(rs.getInt("id"), rs.getString("date"),
+                        rs.getString("time"), rs.getString("seat")));
             }
+
         }
-        catch (SQLException e)
+        catch (Exception e)
         {
-            Logger.getLogger(HistoryController.class.getName()).log(Level.SEVERE, null, e);
+            e.printStackTrace();
         }
-        UpdateTable();
+
+        return list;
     }
 
     public void UpdateTable()
@@ -74,40 +75,64 @@ public class HistoryController
         col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         col_time.setCellValueFactory(new PropertyValueFactory<>("time"));
-        col_sit.setCellValueFactory(new PropertyValueFactory<>("sit"));
-        col_cancel.setCellValueFactory(new PropertyValueFactory<>("cancel"));
+        col_seat.setCellValueFactory(new PropertyValueFactory<>("seat"));
 
+        oblist = getDatausers();
         table.setItems(oblist);
     }
 
+    // get selected row from tableview
+    @FXML
+    void getSelected (MouseEvent event)
+    {
+        index = table.getSelectionModel().getSelectedIndex();
+        if (index <= -1)
+        {
+            return;
+        }
+        id = col_id.getCellData(index).toString();
+        date = col_date.getCellData(index).toString();
+        time = col_time.getCellData(index).toString();
+    }
+
+    // delete row from database
     public void deleteBooking()
     {
-        SQLConnection sqlConnection = new SQLConnection();
-        Connection connectionDB = sqlConnection.connect();
-
-        String query = "DELETE FROM Booking WHERE id = ?";
-
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        try
+        // need to check first if the selected booking has finished or it's a future one
+        if(!bookCheckingModel.checkDateTime(date,time))
         {
-            ObservableList<HistoryModel> historyModels;
-            historyModels = table.getSelectionModel().getSelectedItems();
-            System.out.println("historyModels.get(0).getId()");
+            SQLConnection sqlConnection = new SQLConnection();
+            Connection connectionDB = sqlConnection.connect();
 
-            preparedStatement = connectionDB.prepareStatement(query);
-            preparedStatement.setString(1, historyModels.get(0).getId());
+            String query = "DELETE FROM Booking WHERE id = ?";
 
-            resultSet = preparedStatement.executeQuery();
-            Statement statement = connectionDB.createStatement();
-            statement.executeUpdate(query);
+            PreparedStatement preparedStatement = null;
+            try
+            {
+                preparedStatement = connectionDB.prepareStatement(query);
+                preparedStatement.setString(1, id);
+                preparedStatement.execute();
 
-            UpdateTable();
+                UpdateTable();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+                e.getCause();
+            }
+            failMessage.setText("");
+            successMessage.setText("Cancel booking successfully !");
         }
-        catch (Exception e)
+        else
         {
-            e.printStackTrace();
-            e.getCause();
+            successMessage.setText("");
+            failMessage.setText("This booking is finished, cannot cancel !");
         }
+    }
+
+    //cancel booking button action event
+    public void Cancel(ActionEvent event) throws IOException
+    {
+        deleteBooking();
     }
 }
