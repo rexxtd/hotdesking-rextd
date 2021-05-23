@@ -70,7 +70,6 @@ public class HistoryController implements Initializable
         {
             e.printStackTrace();
         }
-
         return list;
     }
 

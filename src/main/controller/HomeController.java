@@ -88,6 +88,16 @@ public class HomeController implements Initializable
         mainPane.setCenter(view);
     }
 
+    //display account detail when user click on "Your Account"
+    @FXML
+        private void loadAccountDetail(ActionEvent event) throws IOException
+    {
+        FxmlLoader object = new FxmlLoader();
+        Pane view = object.getPage("accountdetail");
+        mainPane.setCenter(view);
+    }
+
+
     //logout user
     @FXML
     public void Logout(ActionEvent event) throws IOException
