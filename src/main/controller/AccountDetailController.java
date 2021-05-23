@@ -72,26 +72,33 @@ public class AccountDetailController implements Initializable
     //check if user is admin or not
     public boolean isAdmin()
     {
-        if(txtRole.getText() != "admin")
-        {
-            //failMessage.setText("Only admin can use this function !");
-            return false;
-        }
-        else
+        if(txtRole.getText().equals("admin"))
         {
             failMessage.setText("");
             return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
     @FXML
     public void ManageAccount(ActionEvent event) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("../ui/manageaccount.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if (isAdmin())
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("../ui/manageaccount.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+
+        else
+        {
+            failMessage.setText("Only admin can use this function !");
+        }
     }
 
     @FXML

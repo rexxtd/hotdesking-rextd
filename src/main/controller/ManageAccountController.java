@@ -69,6 +69,8 @@ public class ManageAccountController implements Initializable
 
     public void initialize(URL location, ResourceBundle resources)
     {
+        /*
+        **
         try
         {
             UpdateTable();
@@ -78,8 +80,12 @@ public class ManageAccountController implements Initializable
             e.printStackTrace();
             e.getCause();
         }
+        **
+        */
     }
 
+     /*
+        **
     public static ObservableList<ManageAccountModel> getDatausers() throws SQLException
     {
         SQLConnection sqlConnection = new SQLConnection();
@@ -222,4 +228,5 @@ public class ManageAccountController implements Initializable
         stage.setScene(scene);
         stage.show();
     }
+      */
 }
