@@ -14,6 +14,11 @@
    <children>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <Label fx:id="failMessage" textFill="#ff0b00">
+               <graphic>
+                  <Label fx:id="successMessage" textFill="#00dfff" />
+               </graphic>
+            </Label>
             <TableView fx:id="table" onMouseClicked="#getSelected" prefHeight="300.0" prefWidth="800.0">
                <columns>
                   <TableColumn fx:id="col_id" prefWidth="36.0" text="ID" />

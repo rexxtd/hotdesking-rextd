@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import main.SQLConnection;
 import main.model.ManageAccountModel;
+import main.model.SignUpModel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,10 +26,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class ManageAccountController implements Initializable
 {
+    private SignUpModel signupModel = new SignUpModel();
     @FXML
     private TableView<ManageAccountModel> table;
     @FXML
@@ -63,14 +66,16 @@ public class ManageAccountController implements Initializable
     private TextField txtQuestion;
     @FXML
     private TextField txtAnswer;
+    @FXML
+    private Label failMessage;
+    @FXML
+    private Label successMessage;
 
     ObservableList<ManageAccountModel> listM;
     int index = -1;
 
     public void initialize(URL location, ResourceBundle resources)
     {
-        /*
-        **
         try
         {
             UpdateTable();
@@ -80,22 +85,20 @@ public class ManageAccountController implements Initializable
             e.printStackTrace();
             e.getCause();
         }
-        **
-        */
     }
 
-     /*
-        **
     public static ObservableList<ManageAccountModel> getDatausers() throws SQLException
     {
         SQLConnection sqlConnection = new SQLConnection();
         Connection connectionDB = sqlConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
 
-        ObservableList<ManageAccountModel> list = FXCollections.observableArrayList();
+                ObservableList<ManageAccountModel> list = FXCollections.observableArrayList();
         try
         {
-            PreparedStatement preparedStatement = connectionDB.prepareStatement("SELECT * FROM Employee");
-            ResultSet rs = preparedStatement.executeQuery();
+            preparedStatement = connectionDB.prepareStatement("SELECT * FROM Employee");
+            rs = preparedStatement.executeQuery();
 
             while (rs.next())
             {
@@ -108,6 +111,11 @@ public class ManageAccountController implements Initializable
         {
             e.printStackTrace();
             e.getCause();
+        }
+        finally
+        {
+            preparedStatement.close();
+            rs.close();
         }
         return list;
     }
@@ -157,6 +165,9 @@ public class ManageAccountController implements Initializable
             preparedStatement.setString(1, txtUsername.getText());
             preparedStatement.execute();
 
+            failMessage.setText(null);
+            successMessage.setText("Delete user successfully!");
+
             UpdateTable();
         }
         catch (Exception e)
@@ -170,25 +181,67 @@ public class ManageAccountController implements Initializable
     {
         SQLConnection sqlConnection = new SQLConnection();
         Connection connectionDB = sqlConnection.connect();
+        PreparedStatement preparedStatement = null;
 
-        String sql = "INSERT INTO Employee (firstname, lastname, role, username, password, secret_qs, answer) VALUES (?,?,?,?,?,?,?) ";
-        try
+        String value1 = txtFirstname.getText();
+        String value2 = txtLastname.getText();
+        String value3 = txtRole.getText().toLowerCase();
+        String value4 = txtUsername.getText();
+        String value5 = txtPassword.getText();
+        String value6 = txtQuestion.getText();
+        String value7 = txtAnswer.getText();
+
+        if (value1.trim().isEmpty() || value2.trim().isEmpty() || value3.trim().isEmpty() || value4.trim().isEmpty() || value5.trim().isEmpty() || value6.trim().isEmpty() || value7.trim().isEmpty())
         {
-            PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
-            preparedStatement.setString(1, txtFirstname.getText());
-            preparedStatement.setString(2, txtLastname.getText());
-            preparedStatement.setString(3, txtRole.getText());
-            preparedStatement.setString(4, txtUsername.getText());
-            preparedStatement.setString(5, txtPassword.getText());
-            preparedStatement.setString(6, txtQuestion.getText());
-            preparedStatement.setString(7, txtAnswer.getText());
-            preparedStatement.execute();
+            successMessage.setText(null);
+            failMessage.setText("Please provide all information!");
         }
-        catch (Exception e)
+
+        else
         {
-            e.printStackTrace();
-            e.getCause();
+            if (value3.equals("admin") || value3.equals("staff"))
+            {
+                if (signupModel.accountExist(value4))
+                {
+                    String sql = "INSERT INTO Employee (firstname, lastname, role, username, password, secret_qs, answer) VALUES (?,?,?,?,?,?,?) ";
+                    try
+                    {
+                        preparedStatement = connectionDB.prepareStatement(sql);
+                        preparedStatement.setString(1, value1);
+                        preparedStatement.setString(2, value2);
+                        preparedStatement.setString(3, value3);
+                        preparedStatement.setString(4, value4);
+                        preparedStatement.setString(5, value5);
+                        preparedStatement.setString(6, value6);
+                        preparedStatement.setString(7, value7);
+                        preparedStatement.execute();
+
+                        failMessage.setText(null);
+                        successMessage.setText("User has been added successfully!");
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                        e.getCause();
+                    }
+                    finally
+                    {
+                        preparedStatement.close();
+                    }
+                }
+                else
+                {
+                    successMessage.setText(null);
+                    failMessage.setText("Account existed. Please check username.");
+                }
+            }
+            else
+            {
+                successMessage.setText(null);
+                failMessage.setText("Role can only be 'Staff' or 'Admin' !");
+            }
         }
+        UpdateTable();
     }
 
     public void Update() throws SQLException
@@ -196,22 +249,35 @@ public class ManageAccountController implements Initializable
         SQLConnection sqlConnection = new SQLConnection();
         Connection connectionDB = sqlConnection.connect();
 
-        try
-        {
+        try {
+            String id = txtID.getText();
             String value1 = txtFirstname.getText();
             String value2 = txtLastname.getText();
-            String value3 = txtRole.getText();
+            String value3 = txtRole.getText().toLowerCase();
             String value4 = txtUsername.getText();
             String value5 = txtPassword.getText();
             String value6 = txtQuestion.getText();
             String value7 = txtAnswer.getText();
-            String sql = "UPDATE Employee SET firstname = '" + value1 + "', lastname = '" + value2 + "', role = '" +
-                    value3 + "', username = '" + value4 + "', password = '" + value5 + "', secret_qs = '" +
-                    value6 + "', answer = '" + value7 + "';";
-            PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
-            preparedStatement.execute();
 
-            UpdateTable();
+            if (value3.equals("admin") || value3.equals("staff"))
+            {
+                {
+                    String sql = "UPDATE Employee SET firstname = '" + value1 + "', lastname = '" + value2 + "', role = '" +
+                            value3 + "', username = '" + value4 + "', password = '" + value5 + "', secret_qs = '" +
+                            value6 + "', answer = '" + value7 + "'WHERE id = '" + id + "';";
+                    PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
+                    preparedStatement.execute();
+
+                    UpdateTable();
+                    failMessage.setText(null);
+                    successMessage.setText("User has been updated successfully!");
+                }
+            }
+            else
+            {
+                successMessage.setText(null);
+                failMessage.setText("Role can only be 'Staff' or 'Admin' !");
+            }
         }
         catch (Exception e)
         {
@@ -228,5 +294,4 @@ public class ManageAccountController implements Initializable
         stage.setScene(scene);
         stage.show();
     }
-      */
 }

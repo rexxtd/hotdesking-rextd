@@ -44,20 +44,29 @@ public class HistoryController implements Initializable
 
     public void initialize(URL location, ResourceBundle resources)
     {
-        UpdateTable();
+        try
+        {
+            UpdateTable();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 
-    public static ObservableList<HistoryModel> getDatausers()
+    public static ObservableList<HistoryModel> getDatausers() throws SQLException
     {
         //get connection from database to table
         SQLConnection sqlConnection = new SQLConnection();
         Connection connectionDB = sqlConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;;
 
         ObservableList<HistoryModel> list = FXCollections.observableArrayList();
         try
         {
-            PreparedStatement preparedStatement = connectionDB.prepareStatement("SELECT * FROM Booking WHERE username = '" + homeController.al_username + "';");
-            ResultSet rs = preparedStatement.executeQuery();
+            preparedStatement = connectionDB.prepareStatement("SELECT * FROM Booking WHERE username = '" + homeController.al_username + "';");
+            rs = preparedStatement.executeQuery();
 
             while (rs.next())
             {
@@ -70,10 +79,15 @@ public class HistoryController implements Initializable
         {
             e.printStackTrace();
         }
+        finally
+        {
+            preparedStatement.close();
+            rs.close();
+        }
         return list;
     }
 
-    public void UpdateTable()
+    public void UpdateTable() throws SQLException
     {
         col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_date.setCellValueFactory(new PropertyValueFactory<>("date"));

@@ -21,6 +21,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AccountDetailController implements Initializable
@@ -40,20 +41,29 @@ public class AccountDetailController implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        getDetail();
+        try
+        {
+            getDetail();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     //get general account information
-    public void getDetail()
+    public void getDetail() throws SQLException
     {
         //get connection from database to table
         SQLConnection sqlConnection = new SQLConnection();
         Connection connectionDB = sqlConnection.connect();
 
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
         try
         {
-            PreparedStatement preparedStatement = connectionDB.prepareStatement("SELECT * FROM Employee WHERE username = '" + homeController.al_username + "';");
-            ResultSet rs = preparedStatement.executeQuery();
+            preparedStatement = connectionDB.prepareStatement("SELECT * FROM Employee WHERE username = '" + homeController.al_username + "';");
+            rs = preparedStatement.executeQuery();
 
             if (rs.next())
             {
@@ -66,6 +76,11 @@ public class AccountDetailController implements Initializable
         catch (Exception e)
         {
             e.printStackTrace();
+        }
+        finally
+        {
+            preparedStatement.close();
+            rs.close();
         }
     }
 
