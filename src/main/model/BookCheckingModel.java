@@ -9,28 +9,6 @@ import java.time.LocalTime;
 
 public class BookCheckingModel
 {
-    //add date and time to database
-    public void addDateTime(String username, String date, String time) throws SQLException
-    {
-        SQLConnection sqlConnection = new SQLConnection();
-        Connection connectionDB = sqlConnection.connect();
-
-        String insertFields = "INSERT INTO Booking (username, date, time, approved) VALUES ('" ;
-        String insertValues =  username + "','" + date + "','" + time + "','pending " + "')";
-        String query = insertFields + insertValues;
-
-        try
-        {
-            Statement statement = connectionDB.createStatement();
-            statement.executeUpdate(query);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            e.getCause();
-        }
-    }
-
     //checking if user have booking in the future
     public boolean bookingExist(String user, String date, String time) throws SQLException
     {

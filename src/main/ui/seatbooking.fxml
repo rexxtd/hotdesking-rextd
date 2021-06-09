@@ -43,7 +43,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ef8d22" height="27.0" layoutX="277.0" layoutY="228.0" stroke="BLACK" strokeType="INSIDE" width="44.0" />
       <Label layoutX="327.0" layoutY="177.0" text=": Seat has been booked" />
       <Label layoutX="327.0" layoutY="231.0" text=": Seat has been locked" />
-      <Label fx:id="txtSeat" layoutX="577.0" layoutY="423.0">
+      <Label fx:id="txtSeat" layoutX="561.0" layoutY="440.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -55,5 +55,6 @@
             </Label>
          </graphic>
       </Label>
+      <Label fx:id="failMessage" layoutX="451.0" layoutY="382.0" prefHeight="34.0" prefWidth="361.0" textFill="#ff0b00" />
    </children>
 </AnchorPane>

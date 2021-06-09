@@ -18,6 +18,7 @@ import java.sql.SQLException;
 
 public class BookCheckingController
 {
+    public static String bd_username, bd_date, bd_time;
     public LoginController loginController = new LoginController();
     public BookCheckingModel bookCheckingModel = new BookCheckingModel();
     @FXML
@@ -49,11 +50,8 @@ public class BookCheckingController
             String date = dpDate.getValue().toString();
             String time = cbhour.getValue().toString() + ":" + cbminute.getValue().toString();
 
-            //check if the data is duplicate to database
             if (bookCheckingModel.bookingExist(username, date, time))
             {
-                //add date and time to database
-                bookCheckingModel.addDateTime(username, date, time);
                 return true;
             }
             else
@@ -71,12 +69,20 @@ public class BookCheckingController
         }
     }
 
+    public void storeData()
+    {
+        bd_username = loginController.username;
+        bd_date = dpDate.getValue().toString();
+        bd_time = cbhour.getValue().toString() + ":" + cbminute.getValue().toString();
+    }
+
     //action event when user click continue button in booking tab
     @FXML
     public void confirmBooking(ActionEvent event) throws IOException, SQLException
     {
         if(getInput())
         {
+            storeData();
             Parent root = FXMLLoader.load(getClass().getResource("../ui/seatbooking.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
