@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -63,29 +62,6 @@ public class SeatCheckingController implements Initializable
             inc++;
         }
     }
-
-    // check which seat is locked
-    /* public void lockedSeat()
-    {
-        for (int i = 0; i< seatNameArr.length; i++)
-        {
-            if (!avaiArr[i])
-            {
-                if (seatNameArr[i] == H1.getId())
-                {
-                    H1.setStyle("-fx-background-color: red");
-                }
-                else if (seatNameArr[i] == "H2")
-                {
-                    H2.setStyle("-fx-background-color: red");
-                }
-                if (seatNameArr[i] == "H3")
-                {
-                    H3.setStyle("-fx-background-color: red");
-                }
-            }
-        }
-    } */
 
     // see which seat is clicked
     public void handleButtonAction(ActionEvent e)

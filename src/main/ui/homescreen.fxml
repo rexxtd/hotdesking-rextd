@@ -15,7 +15,7 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hotdesking is the software developed to allocate tables and seats to Arub employees. It includes features such as booking a sit, checking booking history, and managing user account(administrator only)." wrappingWidth="606.25">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hotdesking is the software developed to allocate tables and seats to Arub employees. It includes features such as booking a sit, checking book history, and managing user account/booking(administrator only)." wrappingWidth="606.25">
                <font>
                   <Font size="20.0" />
                </font>

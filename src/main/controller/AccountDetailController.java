@@ -1,7 +1,5 @@
 package main.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,11 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import main.FxmlLoader;
 import main.SQLConnection;
-import main.model.HistoryModel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -119,7 +114,7 @@ public class AccountDetailController implements Initializable
     @FXML
     public void ManageBooking(ActionEvent event) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("../ui/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/managebooking.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

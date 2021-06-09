@@ -38,6 +38,8 @@ public class HistoryController implements Initializable
     @FXML
     private TableColumn<HistoryModel, String> col_seat;
     @FXML
+    private TableColumn<HistoryModel, String> col_approved;
+    @FXML
     private Label successMessage;
     @FXML
     private Label failMessage;
@@ -71,7 +73,7 @@ public class HistoryController implements Initializable
             while (rs.next())
             {
                 list.add(new HistoryModel(rs.getInt("id"), rs.getString("date"),
-                        rs.getString("time"), rs.getString("seat")));
+                        rs.getString("time"), rs.getString("seat"), rs.getString("approved")));
             }
 
         }
@@ -93,6 +95,7 @@ public class HistoryController implements Initializable
         col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         col_time.setCellValueFactory(new PropertyValueFactory<>("time"));
         col_seat.setCellValueFactory(new PropertyValueFactory<>("seat"));
+        col_approved.setCellValueFactory(new PropertyValueFactory<>("approved"));
 
         oblist = getDatausers();
         table.setItems(oblist);

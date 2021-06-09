@@ -1,14 +1,11 @@
 package main.model;
 
 import main.SQLConnection;
-import org.sqlite.SQLiteConnection;
 
 import java.sql.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+
 
 public class BookCheckingModel
 {
@@ -18,8 +15,8 @@ public class BookCheckingModel
         SQLConnection sqlConnection = new SQLConnection();
         Connection connectionDB = sqlConnection.connect();
 
-        String insertFields = "INSERT INTO Booking (username, date, time) VALUES ('" ;
-        String insertValues =  username + "','" + date + "','" + time + "')";
+        String insertFields = "INSERT INTO Booking (username, date, time, approved) VALUES ('" ;
+        String insertValues =  username + "','" + date + "','" + time + "','pending " + "')";
         String query = insertFields + insertValues;
 
         try

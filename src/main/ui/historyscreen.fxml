@@ -26,10 +26,11 @@
             </Label>
             <TableView fx:id="table" onMouseClicked="#getSelected" prefHeight="244.0" prefWidth="479.0">
               <columns>
-                <TableColumn fx:id="col_id" prefWidth="123.0" text="Booking ID" />
-                <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="125.0" text="Date" />
-                  <TableColumn fx:id="col_time" prefWidth="140.0" text="Time" />
-                  <TableColumn fx:id="col_seat" prefWidth="90.0" text="Seat" />
+                <TableColumn fx:id="col_id" prefWidth="50.0" text="ID" />
+                <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="140.0" text="Date" />
+                  <TableColumn fx:id="col_time" prefWidth="99.0" text="Time" />
+                  <TableColumn fx:id="col_seat" prefWidth="65.0" text="Seat" />
+                  <TableColumn fx:id="col_approved" prefWidth="123.0" text="Approved" />
               </columns>
             </TableView>
          </children>

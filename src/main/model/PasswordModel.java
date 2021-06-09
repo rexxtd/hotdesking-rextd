@@ -1,12 +1,9 @@
 package main.model;
 
 import main.SQLConnection;
-import org.sqlite.SQLiteConnection;
 
-import java.security.SecureRandom;
 import java.sql.*;
 import java.util.Random;
-import main.model.ResetModel;
 
 public class PasswordModel {
     Connection connection;

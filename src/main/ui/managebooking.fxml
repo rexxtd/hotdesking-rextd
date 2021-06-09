@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ManageBookingController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="105.0" prefHeight="600.0" prefWidth="590.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <Label fx:id="failMessage" textFill="#ff0b00">
+               <graphic>
+                  <Label fx:id="successMessage" textFill="#00dfff" />
+               </graphic>
+            </Label>
+            <TableView fx:id="table" onMouseClicked="#getSelected" prefHeight="300.0" prefWidth="502.0">
+               <columns>
+                  <TableColumn fx:id="col_id" prefWidth="42.0" text="ID" />
+                  <TableColumn fx:id="col_username" minWidth="0.0" prefWidth="115.0" text="Username" />
+                  <TableColumn fx:id="col_date" prefWidth="124.0" text="Date" />
+                  <TableColumn fx:id="col_time" prefWidth="124.0" text="Time" />
+                  <TableColumn fx:id="col_seat" prefWidth="66.0" text="Seat" />
+                  <TableColumn fx:id="col_approved" prefWidth="98.0" text="Approved" />
+               </columns>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
+            </TableView>
+            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="600.0">
+               <children>
+                  <Label fx:id="txtID" prefHeight="21.0" prefWidth="68.0">
+                     <graphic>
+                        <Label text="ID: " />
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="txtUsername" prefHeight="21.0" prefWidth="180.0">
+                     <graphic>
+                        <Label text="Username: " />
+                     </graphic>
+                  </Label>
+                  <Label fx:id="txtDate" prefHeight="21.0" prefWidth="160.0">
+                     <graphic>
+                        <Label text="Date: " />
+                     </graphic>
+                  </Label>
+                  <Label fx:id="txtTime" prefHeight="21.0" prefWidth="150.0">
+                     <graphic>
+                        <Label text="Time: " />
+                     </graphic>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+               <children>
+                  <Label fx:id="txtSeat" prefHeight="21.0" prefWidth="100.0">
+                     <graphic>
+                        <Label text="Seat: " />
+                     </graphic>
+                  </Label>
+                  <Label fx:id="txtApproved">
+                     <graphic>
+                        <Label text="Approved: " />
+                     </graphic>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#Back" prefHeight="40.0" prefWidth="120.0" text="&lt;- Back">
+                     <HBox.margin>
+                        <Insets right="245.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#Approve" prefHeight="40.0" prefWidth="86.0" text="Approve" />
+                  <Button mnemonicParsing="false" onAction="#Cancel" prefHeight="40.0" prefWidth="80.0" text="Cancel">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

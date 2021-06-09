@@ -9,14 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
-import main.SQLConnection;
 
 import main.model.SignUpModel;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable

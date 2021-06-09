@@ -10,12 +10,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import main.model.BookCheckingModel;
-import main.controller.LoginController;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
