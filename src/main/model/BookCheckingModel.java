@@ -40,8 +40,14 @@ public class BookCheckingModel
 
                 if (!checkDateTime(data_date, data_time)) //if false means there is future booking
                 {
-                    checking = true;
-                    break;
+                    String checkApproved = resultSet.getString("approved");
+                    if (checkApproved.equals("pending") || checkApproved.equals("yes"))
+                        //if false means this book has been cancelled
+                        //true then return: there is a future booking that is waiting to approve
+                    {
+                        checking = true;
+                        break;
+                    }
                 }
             }
 

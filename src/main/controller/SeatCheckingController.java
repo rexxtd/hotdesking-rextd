@@ -227,10 +227,15 @@ public class SeatCheckingController implements Initializable
     @FXML
     public void Confirm(ActionEvent event) throws IOException, SQLException
     {
-        if (!checkAvailability(seat))
+        if (seat.equals(""))
+        {
+            failMessage.setText("Please choose a seat");
+        }
+        else if (!checkAvailability(seat))
         {
             failMessage.setText("This seat is not available,please choose another seat");
         }
+
         else
         {
             seatCheckingModel.addBooking(bcc.bd_username, bcc.bd_date, bcc.bd_time, seat);

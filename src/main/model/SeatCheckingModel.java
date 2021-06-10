@@ -14,7 +14,7 @@ public class SeatCheckingModel
         Connection connectionDB = sqlConnection.connect();
 
         String insertFields = "INSERT INTO Booking (username, date, time, seat, approved) VALUES ('" ;
-        String insertValues =  username + "','" + date + "','" + time + "','" + seat + "','pending " + "')";
+        String insertValues =  username + "','" + date + "','" + time + "','" + seat + "','pending" + "')";
         String query = insertFields + insertValues;
 
         try

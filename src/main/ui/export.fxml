@@ -19,7 +19,7 @@
                   <Insets top="15.0" />
                </VBox.margin>
             </Label>
-            <Label text="File has been stored at">
+            <Label text="Data has been stored at">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -29,7 +29,7 @@
                   <Insets />
                </VBox.margin>
                <graphic>
-                  <Label text="export\file.csv" textFill="RED" />
+                  <Label text=".\export\ folder" textFill="RED" />
                </graphic>
             </Label>
             <Button mnemonicParsing="false" onAction="#Close" prefHeight="31.0" prefWidth="58.0" text="OK">

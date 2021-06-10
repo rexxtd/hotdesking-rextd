@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import main.SQLConnection;
 import main.model.ManageBookingModel;
 import main.model.BookCheckingModel;
+import main.controller.HistoryController;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -32,6 +33,7 @@ import java.util.ResourceBundle;
 
 public class ManageBookingController implements Initializable
 {
+    private HistoryController historyController = new HistoryController();
     private BookCheckingModel bookCheckingModel = new BookCheckingModel();
     @FXML
     private TableView<ManageBookingModel> table;
@@ -71,6 +73,7 @@ public class ManageBookingController implements Initializable
     {
         try
         {
+            historyController.autoReject();
             UpdateTable();
             failMessage.setText("Choose the booking from the table and select action (Approve/Cancel)");
         }
