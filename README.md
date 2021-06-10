@@ -12,11 +12,12 @@ Password: admin
     - This is a app write in Java, build and run on Intellij.
     - The app is called **HOTDESKING**. It is used to allocate tables and seats to employees.
 
-2. What steps need to be taken?
-    # Packaging
+2. What is in it?
+
+    **Packaging**
     The main class is Main.java
 
-    Packaging for classes:
+    **Packaging for classes:**
     - main.controller
     - main.model
     - main.ui
