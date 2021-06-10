@@ -82,9 +82,10 @@
                <children>
                   <Button mnemonicParsing="false" onAction="#Back" prefHeight="40.0" prefWidth="120.0" text="&lt;- Back">
                      <HBox.margin>
-                        <Insets right="245.0" />
+                        <Insets right="170.0" />
                      </HBox.margin>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#Export" prefHeight="40.0" prefWidth="86.0" text="Export" />
                   <Button mnemonicParsing="false" onAction="#Approve" prefHeight="40.0" prefWidth="86.0" text="Approve" />
                   <Button mnemonicParsing="false" onAction="#Cancel" prefHeight="40.0" prefWidth="80.0" text="Cancel">
                      <HBox.margin>

@@ -114,10 +114,17 @@ public class AccountDetailController implements Initializable
     @FXML
     public void ManageBooking(ActionEvent event) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("../ui/managebooking.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if (!isAdmin())
+        {
+            failMessage.setText("Only admin can use this function !");
+        }
+        else
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("../ui/managebooking.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 }

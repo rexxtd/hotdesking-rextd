@@ -19,7 +19,10 @@ import main.SQLConnection;
 import main.model.ManageBookingModel;
 import main.model.BookCheckingModel;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -232,6 +235,54 @@ public class ManageBookingController implements Initializable
         }
     }
 
+    public void export() throws SQLException, FileNotFoundException
+    {
+        PrintWriter pw= new PrintWriter(new File("./export/Booking.csv"));
+        StringBuilder sb=new StringBuilder();
+
+        SQLConnection sqlConnection = new SQLConnection();
+        Connection connectionDB = sqlConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+
+        String sql = "SELECT * FROM Booking";
+
+        try
+        {
+            preparedStatement = connectionDB.prepareStatement(sql);
+            rs = preparedStatement.executeQuery();
+
+            while (rs.next())
+            {
+                sb.append(rs.getString("id"));
+                sb.append(",");
+                sb.append(rs.getString("username"));
+                sb.append(",");
+                sb.append(rs.getString("date"));
+                sb.append(",");
+                sb.append(rs.getString("time"));
+                sb.append(",");
+                sb.append(rs.getString("seat"));
+                sb.append(",");
+                sb.append(rs.getString("approved"));
+                sb.append("\r\n");
+            }
+            pw.write(sb.toString());
+            pw.close();
+        }
+        catch (Exception e)
+        {
+            e.getCause();
+            e.printStackTrace();
+        }
+        finally
+        {
+            preparedStatement.close();
+            rs.close();
+            connectionDB.close();
+        }
+    }
+
     public void Back(ActionEvent event) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("../ui/home.fxml"));
@@ -239,5 +290,15 @@ public class ManageBookingController implements Initializable
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void Export(ActionEvent event) throws IOException, SQLException
+    {
+        export();
+        Parent anotherRoot = FXMLLoader.load(getClass().getResource("../ui/export.fxml"));
+        Stage anotherStage = new Stage();
+        Scene anotherScene = new Scene(anotherRoot);
+        anotherStage.setScene(anotherScene);
+        anotherStage.show();
     }
 }

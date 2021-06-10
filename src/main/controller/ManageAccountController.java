@@ -20,7 +20,7 @@ import main.SQLConnection;
 import main.model.ManageAccountModel;
 import main.model.SignUpModel;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,8 +28,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class ManageAccountController implements Initializable
-{
+public class ManageAccountController implements Initializable {
     private SignUpModel signupModel = new SignUpModel();
     @FXML
     private TableView<ManageAccountModel> table;
@@ -93,7 +92,7 @@ public class ManageAccountController implements Initializable
         PreparedStatement preparedStatement = null;
         ResultSet rs = null;
 
-                ObservableList<ManageAccountModel> list = FXCollections.observableArrayList();
+        ObservableList<ManageAccountModel> list = FXCollections.observableArrayList();
         try
         {
             preparedStatement = connectionDB.prepareStatement("SELECT * FROM Employee");
@@ -138,8 +137,7 @@ public class ManageAccountController implements Initializable
     void getSelected(MouseEvent event)
     {
         index = table.getSelectionModel().getSelectedIndex();
-        if (index <= -1)
-        {
+        if (index <= -1) {
             return;
         }
         txtID.setText(col_id.getCellData(index).toString());
@@ -195,7 +193,6 @@ public class ManageAccountController implements Initializable
             successMessage.setText(null);
             failMessage.setText("Please provide all information!");
         }
-
         else
         {
             if (value3.equals("admin") || value3.equals("staff"))
@@ -248,7 +245,8 @@ public class ManageAccountController implements Initializable
         SQLConnection sqlConnection = new SQLConnection();
         Connection connectionDB = sqlConnection.connect();
 
-        try {
+        try
+        {
             String id = txtID.getText();
             String value1 = txtFirstname.getText();
             String value2 = txtLastname.getText();
@@ -285,6 +283,58 @@ public class ManageAccountController implements Initializable
         }
     }
 
+    public void export() throws SQLException, FileNotFoundException
+    {
+        PrintWriter pw= new PrintWriter(new File("./export/Employee.csv"));
+        StringBuilder sb=new StringBuilder();
+
+        SQLConnection sqlConnection = new SQLConnection();
+        Connection connectionDB = sqlConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+
+        String sql = "SELECT * FROM Employee";
+
+        try
+        {
+            preparedStatement = connectionDB.prepareStatement(sql);
+            rs = preparedStatement.executeQuery();
+
+            while (rs.next())
+            {
+                sb.append(rs.getString("id"));
+                sb.append(",");
+                sb.append(rs.getString("firstname"));
+                sb.append(",");
+                sb.append(rs.getString("lastname"));
+                sb.append(",");
+                sb.append(rs.getString("role"));
+                sb.append(",");
+                sb.append(rs.getString("username"));
+                sb.append(",");
+                sb.append(rs.getString("password"));
+                sb.append(",");
+                sb.append(rs.getString("secret_qs"));
+                sb.append(",");
+                sb.append(rs.getString("answer"));
+                sb.append("\r\n");
+            }
+            pw.write(sb.toString());
+            pw.close();
+        }
+        catch (Exception e)
+        {
+            e.getCause();
+            e.printStackTrace();
+        }
+        finally
+        {
+            preparedStatement.close();
+            rs.close();
+            connectionDB.close();
+        }
+    }
+
     public void Back(ActionEvent event) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("../ui/home.fxml"));
@@ -292,5 +342,15 @@ public class ManageAccountController implements Initializable
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void Export(ActionEvent event) throws IOException, SQLException
+    {
+        export();
+        Parent anotherRoot = FXMLLoader.load(getClass().getResource("../ui/export.fxml"));
+        Stage anotherStage = new Stage();
+        Scene anotherScene = new Scene(anotherRoot);
+        anotherStage.setScene(anotherScene);
+        anotherStage.show();
     }
 }
