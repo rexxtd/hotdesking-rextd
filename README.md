@@ -1,82 +1,34 @@
 # Readme
 
-This README should be completed by the student
+Login info(for admin user):
 
-# Packaging
-The main class is Main.java
+Username: admin
 
-Packaging for classes:
- - main.controller
- - main.model
- - main.ui
-Packaging for test:
- - test.model
-
-## How to clone the project using intelliJIDEA and RUN the application
-1- Download IntelliJ IDEA Ultimate Version (You had to apply for student license)
-
-2- Open IntelliJ IDEA, select "File" from the top menu, select "New" and select "Project from Version Control"  
-
-3- Copy your Github classroom repository and paste into URL, click on "Clone".
- Your project will be cloned and open in your IntelliJ IDEA window.
- 
- However, you still need to add the SQLite jar file to your project so you can have access to your database. Follow next steps for adding the Jar file:
- 
-1- Download the SQLite JDBC jar file from week 7 Canvas module.
-
-2- In your project under project root, make a new directory called lib and move the jar file into lib folder
-
-3- Open IntelliJ IDEA, click on "File", open "Project Structure"
-
-4- Under "Project Setting", select "Libraries"
-
-5- Click + button, choose Java, and navigate to your project folder, then Lib folder, choose "sqlite-jdbc-3.34.0.jar", and click on "open"
-
-6- Click on Apply and then OK to close the window
-
-Now you are ready to Run the Application.
-
-Simply right click on Main.java and choose Run.
-Congratulations!
-
-Login info:
-
-Username: test
-
-Password: test
-
-
-## Prepare other content
-
-Readme files are made for developers (including you), but also could be used for the final users.
-So while you are writing your readme files please consider a few things:
+Password: admin
 
 1. What is about?
-    - Your name and student number and course name on the top
-    - Describe the content of your project or repository
-    - Explain things the users would have a hard time understanding right away
+    - My name is Nguyen Tuan Dat, studentid: s3726128 
+    - This is an assignment for Further Programming Course - COSC2391
+    - This is a app write in Java, build and run on Intellij.
+    - The app is called **HOTDESKING**. It is used to allocate tables and seats to employees.
+
 2. What steps need to be taken?
-    - Any specific steps for running your application, what is the main class?
-    - Is there any requirements or dependencies?
-    - After the installation, how they compile or run the code?
+    # Packaging
+    The main class is Main.java
+
+    Packaging for classes:
+    - main.controller
+    - main.model
+    - main.ui
+
+    - To run this application, simply run Main.java, no extra installation is required
+
 3. Execution examples
-    - You could provide examples of execution with code and screenshots
-    
+    ![image](https://user-images.githubusercontent.com/73376155/121525720-e4210480-ca22-11eb-9e7a-258e2b7329d1.png)
+    ![image](https://user-images.githubusercontent.com/73376155/121525788-f438e400-ca22-11eb-96ae-0aaedf1eeeee.png)
 
-other things you could add:
+4. Disclamer
+    - There are still some bugs/wrong algorithms that have not been fixed yet due to the fact that the developer have to do many other assignments of many other subjects
 
-- Table of content
-- Test cases
-- Know bugs
-- Things that have not been working or complete
-
-
-
-### References and tutorials for Readme (Markdown)
-- **IntelliJ IDEA MarkDown guide**. jetbrains.com/help/idea/markdown.html
-- **Choose an open source license**. Github. Available at: https://choosealicense.com/
-- **Getting started with writing and formatting on Github**. Github. Available at: https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/
-- **Markdown here cheatsheet**. Markdown Here Wiki. Available at: https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet
-- **Markdown quick reference**. Wordpress. Available at: https://en.support.wordpress.com/markdown-quick-reference/
-- **readme-template**. Dan Bader. Github. Available at: https://github.com/dbader/readme-template
-- Writing READMEs. **Udacity**. Available at: https://classroom.udacity.com/courses/ud777/
+5. Will this project be updated frequently?
+    - Probably only fixing bugs and issue of the algorithms, it is much likely to not have any GUI update
