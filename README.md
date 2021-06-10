@@ -25,8 +25,12 @@ Password: admin
     - To run this application, simply run Main.java, no extra installation is required
 
 3. Execution examples
+
     ![image](https://user-images.githubusercontent.com/73376155/121525720-e4210480-ca22-11eb-9e7a-258e2b7329d1.png)
+    
+    
     ![image](https://user-images.githubusercontent.com/73376155/121525788-f438e400-ca22-11eb-96ae-0aaedf1eeeee.png)
+    
 
 4. Disclamer
     - There are still some bugs/wrong algorithms that have not been fixed yet due to the fact that the developer have to do many other assignments of many other subjects
