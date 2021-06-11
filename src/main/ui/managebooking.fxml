@@ -87,7 +87,7 @@
                   </Button>
                   <Button mnemonicParsing="false" onAction="#Export" prefHeight="40.0" prefWidth="86.0" text="Export" />
                   <Button mnemonicParsing="false" onAction="#Approve" prefHeight="40.0" prefWidth="86.0" text="Approve" />
-                  <Button mnemonicParsing="false" onAction="#Cancel" prefHeight="40.0" prefWidth="80.0" text="Cancel">
+                  <Button mnemonicParsing="false" onAction="#Cancel" prefHeight="40.0" prefWidth="80.0" text="Reject">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
