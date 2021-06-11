@@ -127,4 +127,21 @@ public class AccountDetailController implements Initializable
             stage.show();
         }
     }
+
+    @FXML
+    public void SeatLocking(ActionEvent event) throws IOException
+    {
+        if (!isAdmin())
+        {
+            failMessage.setText("Only admin can use this function !");
+        }
+        else
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("../ui/seatlocking.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
 }

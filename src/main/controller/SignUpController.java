@@ -57,7 +57,8 @@ public class SignUpController implements Initializable
     }
 
     //what happen when click sign up button
-    public void Signup(ActionEvent event) throws SQLException {
+    public void Signup(ActionEvent event) throws SQLException
+    {
         registerUser();
     }
 

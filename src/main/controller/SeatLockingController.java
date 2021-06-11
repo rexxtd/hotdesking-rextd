@@ -1,32 +1,32 @@
 package main.controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import main.SQLConnection;
+import main.model.SeatLockingModel;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URL;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import main.SQLConnection;
-import main.model.SeatCheckingModel;
-
-public class SeatCheckingController implements Initializable
+public class SeatLockingController implements Initializable
 {
-    private BookCheckingController bcc = new BookCheckingController();
-    private SeatCheckingModel seatCheckingModel = new SeatCheckingModel();
+    private SeatLockingModel seatLockingModel = new SeatLockingModel();
 
-    private int inc = 0;
     private String seat = "";
     private String lastClickedIndex = "";
     @FXML
@@ -34,10 +34,11 @@ public class SeatCheckingController implements Initializable
     @FXML
     private Label failMessage;
     @FXML
+    private Label successMessage;
+    @FXML
     private Button H1,H2,H3,H4,H5,H6,H7,V1,V2,V3,V4,V5,V6,V7,V8,V9;
 
     private String [] seatNameArr = new String[16];
-    private Boolean[] bookedArr = new Boolean[16];
     private Boolean[] lockedArr = new Boolean[16];
     ArrayList<Button> buttons = new ArrayList<Button>();
 
@@ -73,7 +74,7 @@ public class SeatCheckingController implements Initializable
 
     public void populateButtonList()
     {
-        Field[] fields = SeatCheckingController.class.getDeclaredFields();
+        Field[] fields = SeatLockingController.class.getDeclaredFields();
 
         // Loop over each field to determine if it is a Button.
         for (Field field : fields)
@@ -103,17 +104,17 @@ public class SeatCheckingController implements Initializable
         PreparedStatement preparedStatement = connectionDB.prepareStatement("select * from seat");
         ResultSet rs = preparedStatement.executeQuery();
 
+        int inc = 0;
         try
         {
             while (rs.next())
             {
                 seatNameArr[inc] = rs.getString("seatname");
-                bookedArr[inc] = rs.getBoolean("booked");
                 lockedArr[inc] = rs.getBoolean("locked");
                 if (lockedArr[inc])
                     buttons.get(inc).setStyle("-fx-background-color: #ef8d22");
-                else if (bookedArr[inc])
-                    buttons.get(inc).setStyle("-fx-background-color: #c92d39");
+                else
+                    buttons.get(inc).setStyle("-fx-background-color: #7ab648");
                 inc++;
             }
         }
@@ -201,56 +202,69 @@ public class SeatCheckingController implements Initializable
         seat = txtSeat.getText();
     }
 
-    public boolean checkAvailability(String seat)
-    {
-        boolean avai = true;
-        for (int i = 0; i < seatNameArr.length; i++)
-        {
-            if (seatNameArr[i].equals(seat))
-            {
-                if (lockedArr[i])  //if true then seat is locked
-                {
-                    avai = false;
-                    break;
-                }
-                else if (bookedArr[i])  //if true then seat is booked
-                {
-                    avai = false;
-                    break;
-                }
-            }
-        }
-        if (avai) return true;
-        else return false;
-    }
-
-    //confirm booking and return to homepage
     @FXML
-    public void Confirm(ActionEvent event) throws IOException, SQLException
+    void Lock(ActionEvent event) throws SQLException
     {
         if (seat.equals(""))
         {
+            successMessage.setText("");
             failMessage.setText("Please choose a seat");
         }
-        else if (!checkAvailability(seat))
-        {
-            failMessage.setText("This seat is not available,please choose another seat");
-        }
-
         else
         {
-            seatCheckingModel.addBooking(bcc.bd_username, bcc.bd_date, bcc.bd_time, seat);
-            seatCheckingModel.updateSeat();
-            Parent root = FXMLLoader.load(getClass().getResource("../ui/home.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            seatLockingModel.updateSeat(true, seat);
+            seatCalling();
+            successMessage.setText("Update successfully !");
+            failMessage.setText("");
         }
     }
 
     @FXML
-    public void Cancel(ActionEvent event) throws IOException
+    void Unlock(ActionEvent event) throws SQLException
+    {
+        if (seat.equals(""))
+        {
+            successMessage.setText("");
+            failMessage.setText("Please choose a seat");
+        }
+        else
+        {
+            seatLockingModel.updateSeat(false, seat);
+            seatCalling();
+            successMessage.setText("Update successfully !");
+            failMessage.setText("");
+        }
+    }
+
+    @FXML
+    void LockAll(ActionEvent event) throws SQLException
+    {
+        seatLockingModel.updateAll(true);
+        seatCalling();
+        successMessage.setText("Update successfully !");
+        failMessage.setText("");
+    }
+
+    @FXML
+    void UnlockAll(ActionEvent event) throws SQLException
+    {
+        seatLockingModel.updateAll(false);
+        seatCalling();
+        successMessage.setText("Update successfully !");
+        failMessage.setText("");
+    }
+
+    @FXML
+    void COVID(ActionEvent event) throws SQLException
+    {
+        seatLockingModel.COVID();
+        seatCalling();
+        successMessage.setText("Update successfully !");
+        failMessage.setText("");
+    }
+
+    @FXML
+    void Exit(ActionEvent event) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("../ui/home.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

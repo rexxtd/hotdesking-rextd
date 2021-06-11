@@ -170,8 +170,10 @@ public class HistoryController implements Initializable
                 successMessage.setText("Cancel booking successfully !");
             }
             else
+            {
                 successMessage.setText("");
                 failMessage.setText("Cannot cancel booking that is not be approved.");
+            }
         }
         else
         {
