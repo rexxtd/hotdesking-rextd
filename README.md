@@ -8,7 +8,6 @@ Password: admin
 
 1. What is about?
     - My name is Nguyen Tuan Dat, studentid: s3726128 
-    - This is an assignment for Further Programming Course - COSC2391
     - This is a app write in Java, build and run on Intellij.
     - The app is called **HOTDESKING**. It is used to allocate tables and seats to employees.
 
