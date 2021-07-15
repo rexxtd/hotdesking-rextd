@@ -21,7 +21,7 @@ Password: admin
     - main.model
     - main.ui
 
-    - To run this application, simply run Main.java, no extra installation is required
+    - To run this application, you must setup database connection, then run Main.java
 
 3. Execution examples
 
