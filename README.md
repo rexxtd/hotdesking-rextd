@@ -7,7 +7,7 @@ Username: admin
 Password: admin
 
 1. What is about?
-    - My name is Nguyen Tuan Dat, studentid: s3726128 
+    - My name is Nguyen Tuan Dat
     - This is a app write in Java, build and run on Intellij.
     - The app is called **HOTDESKING**. It is used to allocate tables and seats to employees.
 
